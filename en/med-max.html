@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MED-MAX · Juyoung Lee</title>
+  <meta name="description" content="For MED-MAX, a Tech for Impact team project, I built the Unity client and connected it to a shared space for people taking long-term medication.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../med-max.html">
+<link rel="alternate" hreflang="en" href="med-max.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../med-max.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">Community software</span> · Client development</p>
+      <h1 class="case-title">MED-MAX</h1>
+      <p class="case-lede"><strong>A shared space for people taking long-term medication</strong><br>Our Tech for Impact team, MED-MAX, built <span lang="ko">약꾹</span> for people who feel isolated or lose motivation while taking long-term medication. I connected the client to the server so people could join the same room and see each other move.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Aug – Dec 2024</dd></div>
+        <div><dt>My role</dt><dd>Unity client, user interface, and multiplayer integration</dd></div>
+        <div><dt>Tools</dt><dd>Unity 2D, WebSocket, HTTP, React Native</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure med">
+      <img src="../assets/med-max-prototype.webp" alt="MED-MAX mobile prototype showing a medication log, progress toward a shared goal, and avatars around a tree">
+      <figcaption>In our mobile prototype, users can check their medication logs and enter the community space with their avatars.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Peer support and questions for pharmacists</h2>
+        <p>Our team wanted patients to be able to check in with each other and ask a pharmacist questions. We designed a 2D space where patients could meet and work toward a shared goal. Patients could also send questions as letters, and pharmacists could reply when available without having to staff a live chat.</p>
+      </section>
+      <section>
+        <h2>Keeping avatars in sync</h2>
+        <p>I implemented sign-in, input validation, and screen transitions in the Unity client so users could enter the shared room. I used WebSocket to synchronize other users’ positions and movements, and HTTP to retrieve the user and medication information shown on screen.</p>
+      </section>
+      <section>
+        <h2>Bringing the prototype together</h2>
+        <p>We embedded the Unity WebGL space in a React Native WebView and used room IDs to bring users into the same space. Our team received the Tech for Impact Social Value Award. Measuring the effect on long-term medication adherence remains a next step.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/medMax">View the team’s code on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="tidal.html" rel="prev"><span aria-hidden="true">←</span> Previous project · Tidal Adventure</a>
+      <a href="sbom.html" rel="next">Next project · SBOM Vulnerability Impact Analysis <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

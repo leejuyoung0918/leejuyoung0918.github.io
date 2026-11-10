@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SBOM Vulnerability Analysis · Juyoung Lee</title>
+  <meta name="description" content="I built a tool that takes a vulnerability ID, finds the assets containing the affected component and shows the scan evidence behind each match.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../sbom.html">
+<link rel="alternate" hreflang="en" href="sbom.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../sbom.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">Security engineering</span> · Independent project</p>
+      <h1 class="case-title">SBOM Vulnerability Analysis</h1>
+      <p class="case-lede"><strong>Which assets should you check when a vulnerability is disclosed?</strong><br>I built a tool that takes a vulnerability ID, finds the assets containing the affected component and shows the scan evidence behind each match.</p>
+      <dl class="case-meta">
+        <div><dt>Period</dt><dd>September 2026 – present</dd></div>
+        <div><dt>My role</dt><dd>Built the scan pipeline, API and search interface</dd></div>
+        <div><dt>Tools &amp; methods</dt><dd>Python, FastAPI, NetworkX, Cytoscape.js</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure sbom">
+      <img src="../assets/sbom-atlas.webp" alt="A green path connects nodes across three layers of a graph.">
+      <figcaption>A diagram of the relationships between scanned assets, software components and vulnerabilities.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Connecting two scanners’ findings</h2>
+        <p>Syft generates a software bill of materials (SBOM), and Trivy identifies known vulnerabilities. The two scanners can use different names for the same package or scan an asset at different times. I converted both outputs to a common format and created a snapshot for each asset scan, linking it to the components and vulnerabilities observed at that point.</p>
+      </section>
+      <section>
+        <h2>Tracing a result to its source</h2>
+        <p>From a vulnerability, users can trace each match to an asset, a specific package version and the underlying scan. I labeled unscanned assets as undetermined and kept missing scores distinct from measured scores of zero. I shared the query logic across the command line, API and web interface so all three search and sort results consistently.</p>
+      </section>
+      <section>
+        <h2>Testing with a patched control</h2>
+        <p>I tested the tool against Log4Shell (CVE-2021-44228) using two assets containing Log4j 2.14.1 and a third patched to 2.17.1. In a local graph with 15,086 nodes and 16,508 edges, the query returned only the two assets with the vulnerable version. The test verified whether each asset contained the vulnerable component at scan time.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/sbom-vulnerability-propagation">View the code and reproduction steps on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="med-max.html" rel="prev"><span aria-hidden="true">←</span> Previous project · MED-MAX</a>
+      <a href="convrsation.html" rel="next">Next project · conVRsation <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidal Adventure · Juyoung Lee</title>
+  <meta name="description" content="As an XR development intern at Overay, I improved controller feedback, wayfinding, and creature movement in a VR game set on tidal flats.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../tidal.html">
+<link rel="alternate" hreflang="en" href="tidal.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../tidal.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">XR development</span> · Internship</p>
+      <h1 class="case-title">Tidal Adventure</h1>
+      <p class="case-lede"><strong>Helping players find their way across the tidal flats</strong><br>At Overay, I worked on how creatures respond when players point at them, how players find newly opened areas, and how creatures move around obstacles.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Dec 2024 – Jan 2025</dd></div>
+        <div><dt>My role</dt><dd>XR development intern at Overay, working on interactions and headset testing</dd></div>
+        <div><dt>Tools</dt><dd>Unity, C#, XR controllers, Git</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure tidal">
+      <img src="../assets/tidal-store.webp" alt="Meta Store listing for Tidal Adventure, showing the tidal flats and collecting tools">
+      <figcaption>The Meta Store listing for Tidal Adventure at the time of the project.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Showing which creature the controller is pointing at</h2>
+        <p>Players explore the tidal flats and collect creatures. I traced references across scenes, prefabs, and scripts in the existing Unity project to find where selection events and controller vibrations were triggered. I added a highlight to the creature under the pointer and made its color change according to the size criterion, so players could see its status before collecting it.</p>
+      </section>
+      <section>
+        <h2>Finding the next area with a wrist compass</h2>
+        <p>I made the wrist compass point toward a newly opened area and stop guiding the player once they arrived. I also updated the progression logic to use the number of areas and their opening times. Previously, each rule referred to a hard-coded area number.</p>
+      </section>
+      <section>
+        <h2>Testing a full run on the headset</h2>
+        <p>Creatures used to turn abruptly after hitting an obstacle. I added forward collision detection, acceleration, and deceleration so they could adjust their movement earlier. On an XR headset, I repeatedly tested the full sequence from selecting a creature to collecting it and following the compass. I shared these changes through Git branches and code review and helped prepare the release.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://www.meta.com/en-gb/experiences/tidal-adventure/28677558365162795/">View Tidal Adventure on the Meta Store <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="blindspotter.html" rel="prev"><span aria-hidden="true">←</span> Previous project · BlindSpotter</a>
+      <a href="med-max.html" rel="next">Next project · MED-MAX <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

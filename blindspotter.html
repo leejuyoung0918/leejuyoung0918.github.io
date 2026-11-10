@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlindSpotter · 이주영 포트폴리오</title>
+  <meta name="description" content="주행 장면 속 차량, 보행자, 가려진 공간을 그래프로 연결하고, 과거 프레임이 보행자와 전동킥보드의 출현 예측에 얼마나 도움이 되는지 비교했습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="blindspotter.html">
+<link rel="alternate" hreflang="en" href="en/blindspotter.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/blindspotter.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">Graph machine learning</span> · 모델 개발</p>
+      <h1 class="case-title">BlindSpotter</h1>
+      <p class="case-lede"><strong>사각지대에서 누가 나타날지 예측하기</strong><br>주행 장면 속 차량, 보행자, 가려진 공간을 그래프로 연결하고, 과거 프레임이 보행자와 전동킥보드의 출현 예측에 얼마나 도움이 되는지 비교했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2026.03 – 2026.06</dd></div>
+        <div><dt>담당</dt><dd>그래프 특징 설계, 모델 구현과 평가</dd></div>
+        <div><dt>도구·방법</dt><dd>Python, PyTorch, 시공간 그래프 신경망</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure blind">
+      <img src="assets/blind-training-graph.webp" alt="한 주행 프레임의 기준 차량과 주변 도로 이용자, 사각지대가 노드와 간선으로 표현된 평면 그래프">
+      <figcaption>학습 입력으로 사용한 한 프레임의 그래프. 도로 이용자와 가려진 공간의 위치·관계를 같은 좌표계에 놓았습니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>가려진 공간도 하나의 노드로</h2>
+        <p>주차 차량이나 버스 뒤에서 보행자가 나타나는 상황을 다뤘습니다. 팀은 차량과 취약 도로 이용자(VRU)에 더해 사각지대 자체를 그래프의 노드로 표현했습니다. 모델이 맞히는 대상은 가까운 미래에 해당 영역에서 도로 이용자가 관측되는지입니다.</p>
+      </section>
+      <section>
+        <h2>하나의 장면과 다섯 프레임 비교</h2>
+        <p>모델 입력에 위치·거리·방향·상대속도 등 관계 특징을 담고 형식을 통일했습니다. 값이 크게 튀는 충돌 예측 시간(TTC)에는 상한과 로그 변환을 적용했습니다. 출현 사례가 드문 데이터여서 AUPRC, AUROC, F1을 함께 보고 판정 임계값도 바꾸어 비교했습니다.</p>
+      </section>
+      <section>
+        <h2>출현 예측에서 얻은 결과</h2>
+        <p>장면 단위로 데이터를 나눈 팀 통제실험에서 다섯 프레임을 사용한 Social + ST-GCN의 AUPRC는 0.4573, AUROC는 0.8801, 최고 F1은 0.5481이었습니다. 한 프레임의 공간 관계를 사용한 EIGAT의 AUPRC는 0.3183이었습니다. 수치는 프로젝트 데이터에서 정의한 출현 여부를 분류한 결과입니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/BlindSpotter">GitHub에서 모델과 실험 보기 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="convrsation.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · conVRsation</a>
+      <a href="tidal.html" rel="next">다음 프로젝트 · Tidal Adventure <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

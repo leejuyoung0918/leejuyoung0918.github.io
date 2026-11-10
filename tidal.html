@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidal Adventure · 이주영 포트폴리오</title>
+  <meta name="description" content="Overay의 VR 콘텐츠 개발에 참여해 생물을 가리킬 때의 반응, 다음 구역을 찾는 안내, 생물의 이동을 개선했습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="tidal.html">
+<link rel="alternate" hreflang="en" href="en/tidal.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/tidal.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">XR development</span> · XR 개발 인턴</p>
+      <h1 class="case-title">Tidal Adventure</h1>
+      <p class="case-lede"><strong>갯벌 탐험에서 다음 행동이 보이도록</strong><br>Overay의 VR 콘텐츠 개발에 참여해 생물을 가리킬 때의 반응, 다음 구역을 찾는 안내, 생물의 이동을 개선했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2024.12 – 2025.01</dd></div>
+        <div><dt>담당</dt><dd>Overay XR 개발 인턴 · 상호작용 개선과 기기 QA</dd></div>
+        <div><dt>도구·방법</dt><dd>Unity, C#, XR 컨트롤러, Git</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure tidal">
+      <img src="assets/tidal-store.webp" alt="갯벌과 채집 도구가 보이는 Tidal Adventure의 Meta 스토어 제품 페이지">
+      <figcaption>개발에 참여한 VR 콘텐츠 Tidal Adventure의 당시 Meta 스토어 화면.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>가리키는 순간에 피드백 주기</h2>
+        <p>Tidal Adventure에서 사용자는 갯벌을 돌아다니며 생물을 채집합니다. 기존 Unity 프로젝트의 장면과 프리팹, 스크립트 참조를 따라 선택 이벤트와 진동이 발생하는 지점을 찾았습니다. 컨트롤러로 가리킨 생물을 강조하고, 크기 조건에 따라 색을 바꿔 대상의 상태를 바로 확인할 수 있게 했습니다.</p>
+      </section>
+      <section>
+        <h2>다음 구역을 알려주는 손목 나침반</h2>
+        <p>새 구역이 열리면 손목 나침반이 그 방향을 가리키고, 도착하면 안내가 꺼지도록 구현했습니다. 특정 구역 번호에 고정됐던 진행 규칙도 구역 수와 개방 시간 목록으로 계산하도록 바꿨습니다.</p>
+      </section>
+      <section>
+        <h2>실제 기기에서 탐험 흐름 확인</h2>
+        <p>생물이 장애물에 부딪힌 뒤 급하게 방향을 바꾸던 동작에는 전방 충돌 감지와 가감속을 적용했습니다. 선택과 채집, 다음 구역 안내가 차례대로 이어지는지 실제 XR 기기에서 반복 확인했습니다. 변경 사항을 Git 브랜치와 코드리뷰로 공유하고 배포 준비에 참여했습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://www.meta.com/en-gb/experiences/tidal-adventure/28677558365162795/">Meta 스토어에서 Tidal Adventure 보기 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="blindspotter.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · BlindSpotter</a>
+      <a href="med-max.html" rel="next">다음 프로젝트 · MED-MAX <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

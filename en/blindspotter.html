@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlindSpotter · Juyoung Lee</title>
+  <meta name="description" content="I built graphs linking vehicles, pedestrians and occluded areas in a traffic scene, then tested how much past movement helped predict the appearance of pedestrians and e-scooter riders.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../blindspotter.html">
+<link rel="alternate" hreflang="en" href="blindspotter.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../blindspotter.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">Graph machine learning</span> · Model development</p>
+      <h1 class="case-title">BlindSpotter</h1>
+      <p class="case-lede"><strong>Predicting when a road user will emerge from a blind spot</strong><br>I built graphs linking vehicles, pedestrians and occluded areas in a traffic scene, then tested how much past movement helped predict the appearance of pedestrians and e-scooter riders.</p>
+      <dl class="case-meta">
+        <div><dt>Period</dt><dd>March – June 2026</dd></div>
+        <div><dt>My role</dt><dd>Designed graph features, implemented models and evaluated their predictions</dd></div>
+        <div><dt>Tools &amp; methods</dt><dd>Python, PyTorch, spatiotemporal graph neural networks</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure blind">
+      <img src="../assets/blind-training-graph.webp" alt="A graph of one traffic frame showing the reference vehicle, nearby road users and blind spots as connected nodes.">
+      <figcaption>A single frame used for training. Road users and occluded areas share a coordinate system that captures their positions and relationships.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Representing a blind spot as a node</h2>
+        <p>We studied situations such as a pedestrian emerging from behind a parked car or bus. Our team represented vehicles, vulnerable road users and the blind spots themselves as graph nodes. For each blind spot, the model predicted whether a road user would appear there in the near future.</p>
+      </section>
+      <section>
+        <h2>Comparing one frame with five</h2>
+        <p>I standardized the format of features such as position, distance, direction and relative speed. I capped extreme time-to-collision (TTC) values and applied a log transform. Because appearances were rare, I evaluated precision-recall and ROC curves as well as F1 across a range of decision thresholds.</p>
+      </section>
+      <section>
+        <h2>What past movement added</h2>
+        <p>In our team’s controlled experiment, we split the data by scene. The five-frame Social + ST-GCN model achieved an AUPRC of 0.4573, an AUROC of 0.8801 and a best F1 of 0.5481. EIGAT, which modeled spatial relationships in a single frame, reached an AUPRC of 0.3183. These scores measure how well the models predicted road-user appearances as defined in the project dataset.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/BlindSpotter">Explore the models and experiments on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="convrsation.html" rel="prev"><span aria-hidden="true">←</span> Previous project · conVRsation</a>
+      <a href="tidal.html" rel="next">Next project · Tidal Adventure <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

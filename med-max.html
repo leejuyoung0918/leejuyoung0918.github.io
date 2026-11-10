@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MED-MAX · 이주영 포트폴리오</title>
+  <meta name="description" content="약꾹은 MED-MAX 팀이 장기 복약의 고립감과 동기 저하를 다룬 Tech for Impact 프로젝트입니다. 사용자가 같은 공간에 들어가 서로의 움직임을 볼 수 있게 클라이언트와 서버를 연결했습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="med-max.html">
+<link rel="alternate" hreflang="en" href="en/med-max.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/med-max.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow"><span lang="en">Community software</span> · 클라이언트 개발</p>
+      <h1 class="case-title">MED-MAX</h1>
+      <p class="case-lede"><strong>함께 복약을 이어가는 작은 공동체</strong><br>약꾹은 MED-MAX 팀이 장기 복약의 고립감과 동기 저하를 다룬 Tech for Impact 프로젝트입니다. 사용자가 같은 공간에 들어가 서로의 움직임을 볼 수 있게 클라이언트와 서버를 연결했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2024.08 – 2024.12</dd></div>
+        <div><dt>담당</dt><dd>Unity 클라이언트·UI와 멀티유저 연동</dd></div>
+        <div><dt>도구·방법</dt><dd>Unity 2D, WebSocket, HTTP, React Native</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure med">
+      <img src="assets/med-max-prototype.webp" alt="복약 기록과 공동 목표 진행 상태, 나무와 캐릭터가 한 화면에 보이는 MED-MAX 모바일 프로토타입">
+      <figcaption>팀의 모바일 프로토타입. 복약 기록을 확인하고 캐릭터가 있는 공동체 공간에 들어가는 화면입니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>매일 접속하는 환자와 답변하는 약사</h2>
+        <p>팀은 장기 복약자가 서로 지지하고 약사에게 질문할 수 있는 서비스를 구상했습니다. 약사가 채팅방에 늘 머물러야 하는 부담을 고려해, 환자들은 공동 목표를 가진 2D 공간에서 만나고 약사는 편지형 Q&amp;A에 비동기로 답하는 구조를 설계했습니다.</p>
+      </section>
+      <section>
+        <h2>같은 공간에서 움직이도록</h2>
+        <p>저는 Unity 클라이언트와 UI에서 로그인·입력 검증·화면 전환을 사용자 공간에 연결했습니다. 다른 사용자의 위치와 이동 상태는 WebSocket으로 동기화하고, 사용자·복약 정보는 HTTP로 받아 화면에 반영했습니다.</p>
+      </section>
+      <section>
+        <h2>팀의 통합 결과</h2>
+        <p>팀은 Unity WebGL 공간을 React Native 앱의 WebView에 연결하고 방 ID를 기준으로 사용자를 같은 공간에 배정했습니다. 이 프로젝트로 팀이 Tech for Impact 사회가치상을 받았습니다. 실제 사용자의 복약 지속 효과 측정은 후속 과제입니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/medMax">GitHub에서 팀 프로젝트 코드 보기 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="tidal.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · Tidal Adventure</a>
+      <a href="sbom.html" rel="next">다음 프로젝트 · SBOM 취약점 영향 분석 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>
