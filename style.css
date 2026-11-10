@@ -60,7 +60,7 @@ img { display: block; max-width: 100%; }
 .btn:hover,.btn:focus-visible { background: var(--ink); color: var(--paper); }
 .profile-link,.simple-link { display: inline-flex; align-items: center; gap: 4px; font-size: .83rem; font-weight: 670; }
 .profile-link { margin-top: 18px; vertical-align: middle; }
-.profile-photo { grid-column: 2; grid-row: 1; width: min(100%,432px); justify-self: center; align-self: end; margin-bottom: calc(-1 * clamp(26px,3vw,50px)); mix-blend-mode: multiply; mask-image: linear-gradient(180deg,#000 0%,#000 79%,transparent 100%); }
+.profile-photo { grid-column: 2; grid-row: 1; width: min(86%,360px); justify-self: center; align-self: center; }
 .profile-photo img { width: 100%; height: auto; }
 .interests-band,.history,.work { background: var(--lime); }
 .interest-grid { padding-block: clamp(42px,5.2vw,76px) 0; }
@@ -121,7 +121,7 @@ img { display: block; max-width: 100%; }
   .intro { display: contents; }
   .intro .eyebrow { grid-column: 1; grid-row: 1; align-self: end; font-size: .69rem; }
   .intro h1 { grid-column: 1; grid-row: 2; align-self: start; font-size: clamp(3.8rem,13vw,5.6rem); line-height: .97; margin: 8px 0 20px; }
-  .profile-photo { grid-column: 2; grid-row: 1 / span 2; align-self: end; justify-self: end; width: min(100%,170px); margin-bottom: 0; mask-image: linear-gradient(#000 0 82%,transparent 100%); }
+  .profile-photo { grid-column: 2; grid-row: 1 / span 2; align-self: end; justify-self: end; width: min(86%,144px); margin-bottom: 12px; }
   .profile-card { grid-row: 3; grid-column: 1/-1; max-width: none; }
   .actions,.profile-link { margin-top: 14px; }
   .interest-grid > div:first-child { display: block; }
