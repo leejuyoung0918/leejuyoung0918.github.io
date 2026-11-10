@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Bottle · 이주영 포트폴리오</title>
+  <meta name="description" content="4인 팀에서 물병의 수위를 재는 아두이노와 안드로이드 앱의 블루투스 연결을 구현했습니다. 팀이 만든 서버까지 측정값이 도착하는 과정도 함께 시험했습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="smart-bottle.html">
+<link rel="alternate" hreflang="en" href="en/smart-bottle.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/smart-bottle.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow">IoT · KAIST 소프트웨어공학</p>
+      <h1 class="case-title">Smart Bottle</h1>
+      <p class="case-lede"><strong>물병 뚜껑에서 휴대폰까지, 수위를 읽는 과정</strong><br>4인 팀에서 물병의 수위를 재는 아두이노와 안드로이드 앱의 블루투스 연결을 구현했습니다. 팀이 만든 서버까지 측정값이 도착하는 과정도 함께 시험했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2025년 봄학기</dd></div>
+        <div><dt>담당</dt><dd>하드웨어 제어, 앱 BLE 연동, 통합 시험</dd></div>
+        <div><dt>도구</dt><dd>Arduino, HM-10, Kotlin, Jetpack Compose</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure">
+      <img src="assets/smart-bottle-prototype.webp" alt="시연 중인 스마트 보틀 시제품. 투명 물병 측면의 LED와 뚜껑 센서, 아두이노 보드가 배선으로 연결돼 있다.">
+      <figcaption>수업 최종 시연에서 사용한 시제품. 뚜껑의 초음파 센서가 수면까지의 거리를 재고 물병 옆 LED가 수위를 표시합니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>수면까지의 거리를 물의 양으로</h2>
+        <p>초음파 센서를 물병 뚜껑에 달고, 신호가 되돌아오는 시간으로 수면까지의 거리를 구했습니다. 빈 병에서 잰 기준 거리에서 이 값을 빼면 물의 높이를 얻습니다. 펌웨어는 병의 단면적으로 남은 양을 추정하고, 수위에 따라 옆면의 LED를 켭니다.</p>
+      </section>
+      <section>
+        <h2>측정값이 어디까지 왔는지 보기</h2>
+        <p>기기와 앱이 각각 작동해도 휴대폰 화면에는 값이 뜨지 않을 수 있었습니다. 아두이노가 보낸 문자열과 HM-10을 통해 안드로이드가 받은 값을 대조할 수 있도록 앱에 BLE 수신값을 표시했습니다. 이후 앱 요청과 서버 응답을 차례로 확인해 점검할 구간을 좁혔습니다.</p>
+      </section>
+      <section>
+        <h2>연결이 됐다는 것을 어떻게 확인할까</h2>
+        <p>팀은 요구사항과 설계 문서를 작성하고 FastAPI·MongoDB 백엔드를 앱에 연결했습니다. 통합 시험을 하면서 물병에 남은 양과 사용자가 마신 양은 서로 다른 값이라는 점이 중요했습니다. 인터페이스를 정할 때 단위와 값의 의미, 어느 화면에서 검증할지까지 함께 정하는 법을 배웠습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/SmartBottle">프로젝트 저장소 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/CS30500/FrontEnd/commit/6819891ba4da3e7fe3cb00e8ea1581651d0f5403">안드로이드 BLE 연동 코드 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/CS30500/FrontEnd/commit/5ad1bdae50933f01ed63827a72c0e3551aeb9081">수신값 표시 화면 변경 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="med-max.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · MED-MAX</a>
+      <a href="microbiome.html" rel="next">다음 프로젝트 · 장내 미생물과 파킨슨병 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

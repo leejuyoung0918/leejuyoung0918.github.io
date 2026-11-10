@@ -7,7 +7,7 @@
   <meta name="description" content="이주영의 학력, 연구 경험, 인턴십, 주요 프로젝트와 수상 이력.">
   <title>CV · 이주영 Juyoung Lee</title>
   <link rel="icon" href="assets/mark.png">
-  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+  <link rel="stylesheet" href="style.css?v=portfolio-3">
 <link rel="alternate" hreflang="ko" href="cv.html">
 <link rel="alternate" hreflang="en" href="en/cv.html">
 </head>
@@ -19,14 +19,14 @@
     <div class="cv-head">
       <p class="eyebrow" lang="en">Curriculum Vitae</p>
       <h1>이주영 <span lang="en">Juyoung Lee</span></h1>
-      <p>KAIST 전산학부에서 공부하며 XR 인터랙션, 선호 학습, 그래프 기반 시스템을 연구하고 개발합니다.</p>
+      <p>KAIST에서 전산학을 전공하고 전기및전자공학부 부전공을 이수하고 있습니다. XR 인터랙션, 선호 학습, 그래프 기반 시스템을 연구하고 개발합니다.</p>
     </div>
     <section class="cv-block" aria-labelledby="education">
       <h2 id="education">학력</h2>
       <div>
         <article class="cv-entry">
           <div><time datetime="2027-02">2027.02</time> 졸업 예정</div>
-          <div><h3>KAIST 전산학부</h3><p>학사과정</p></div>
+          <div><h3>KAIST 학사과정</h3><p>주전공 전산학부 · 부전공 전기및전자공학부 (이수 중)</p></div>
         </article>
       </div>
     </section>
@@ -35,15 +35,15 @@
       <div>
         <article class="cv-entry" id="preference-research">
           <div><time datetime="2026-06">2026.06</time> — 현재</div>
-          <div><h3>베이지안 선호 학습 · 자율 연구팀</h3><p>여러 후보 중 하나를 고르는 응답으로 사용자의 선호를 추정했습니다. 다음 질문의 후보를 생성하고 응답에 따라 추정치를 갱신하는 코드를 구현했습니다. 실험마다 후보와 난수 시드를 기록해 알고리즘을 같은 조건에서 비교했습니다.</p></div>
+          <div><h3>베이지안 선호 학습 · 자율 연구팀</h3><p>모델이 사용자의 선호를 좁혀 갈수록 다음 질문의 후보들이 너무 비슷해져, 사람이 차이를 구별하기 어려웠습니다. 추정의 불확실성과 후보 간격을 따로 조절하는 알고리즘을 설계하고, 후보 생성과 응답에 따른 추정치 갱신을 구현했습니다. 500개의 동일한 합성 환경에서 기존 방식과 비교했습니다.</p></div>
         </article>
         <article class="cv-entry" id="hci-research">
           <div><time datetime="2026-05">2026.05</time> — <time datetime="2026-08">08</time></div>
-          <div><h3>KAIST WIT Lab · 학부연구생</h3><p>XR 환경에서 물체를 가리키고 동작을 요청하는 입력 방식을 비교했습니다. 물체 위에 표시되는 UI와 음성 입력을 구현하고, 사용자 실험을 운영하며 작업별 행동 로그와 오류를 분석했습니다.</p></div>
+          <div><h3>EmbleMR · KAIST WIT Lab 학부연구생</h3><p>혼합현실에서 책을 가리키며 번역을 요청할 때, 시스템은 대상과 명령을 함께 알아야 합니다. 물체 위에 표시되는 UI와 음성 입력을 구현하고 일곱 가지 과제에 연결했습니다. 참가자 12명이 시선·제스처, UI, 음성을 사용한 실험에서 행동 로그를 분석해 발화 중 시선이 움직일 때 대상이 바뀌는 오류를 추적했습니다.</p></div>
         </article>
         <article class="cv-entry">
           <div><time datetime="2026-03">2026.03</time> — <time datetime="2026-06">06</time></div>
-          <div><h3>BlindSpotter · KAIST 그래프 머신러닝 팀 프로젝트</h3><p>주행 장면의 사각지대에 보행자 등 취약 도로 이용자가 나타날지를 추정했습니다. 그래프 특징 설계, 모델 구현과 평가를 맡았습니다. 5프레임 시계열 모델은 테스트 세트에서 AUPRC 0.4573을 기록했습니다.</p></div>
+          <div><h3>BlindSpotter · KAIST 그래프 머신러닝 팀 프로젝트</h3><p>IMPTC 교차로 궤적을 장면별로 나누고, 사각지대 부근에 전동킥보드가 나타날지를 예측했습니다. 그래프 특징 설계, 모델 구현과 평가를 맡았습니다. 5프레임 시계열 모델은 테스트 세트에서 AUPRC 0.4573을 기록했습니다.</p></div>
         </article>
       </div>
     </section>
@@ -52,7 +52,11 @@
       <div>
         <article class="cv-entry">
           <div><time datetime="2024-12">2024.12</time> — <time datetime="2025-02">2025.02</time></div>
-          <div><h3>Overay · XR 개발 인턴</h3><p>갯벌 탐사 VR 게임 <span lang="en">Tidal Adventure</span>에서 조준한 갯벌 생물이 색으로 강조되도록 하고 손목 나침반을 개선한 뒤 실제 기기에서 검증했습니다. KAIST Live Concert에서는 동시 접속 시 카메라가 다른 참가자를 따라가는 오류를 수정했습니다.</p></div>
+          <div><h3>Overay · XR 개발 인턴</h3><p>갯벌 탐사 VR 게임 <span lang="en">Tidal Adventure</span>에서 조준한 갯벌 생물이 색으로 강조되도록 하고 손목 나침반을 개선한 뒤 실제 기기에서 검증했습니다.</p></div>
+        </article>
+        <article class="cv-entry" id="live-concert">
+          <div>2024.12 — 2025.02</div>
+          <div><h3>KAIST Live Concert · Overay</h3><p>새 관객이 입장하면 기존 사용자의 카메라가 그 관객의 아바타를 따라갔습니다. 로컬 아바타에만 XR Origin을 연결하고, 헤드셋의 추적 좌표와 네트워크로 공유하는 회전을 분리해 각 사용자의 시점을 유지했습니다.</p></div>
         </article>
       </div>
     </section>
@@ -61,21 +65,41 @@
       <div>
         <article class="cv-entry">
           <div><time datetime="2026-09">2026.09</time> — 현재</div>
-          <div><h3>SBOM 기반 취약점 영향 분석 · 개인 개발</h3><p>소프트웨어 구성 목록과 취약점 검사 결과를 연결해 취약한 구성요소를 포함한 자산과 그 근거를 조회하는 시스템을 만들었습니다. Docker 자산 3개로 진행한 검증에서 취약한 두 자산을 찾아내고 패치한 자산을 제외했습니다.</p></div>
+          <div><h3>SBOM 취약점 전파 가시화 · 쿼드마이너 협업</h3><p>KAIST 전산학 프로젝트 수업에서 쿼드마이너와 협업하고 있습니다. 소프트웨어 구성 목록과 취약점 검사 결과를 연결해 취약한 구성요소를 포함한 자산과 그 근거를 조회하는 시스템을 만들었습니다. Docker 자산 3개로 진행한 검증에서 취약한 두 자산을 찾아내고 패치한 자산을 제외했습니다.</p></div>
         </article>
         <article class="cv-entry">
           <div><time datetime="2026-03">2026.03</time> — <time datetime="2026-07">07</time></div>
-          <div><h3>conVRsation · KAIST GESS 팀 리더</h3><p>경찰과 상담사를 인터뷰해 심리응급처치 대화를 연습하는 VR 시나리오를 설계했습니다. 팀의 시제품 범위를 조율하고 실리콘밸리에서 영어로 데모를 발표했습니다.</p></div>
+          <div><h3>conVRsation · KAIST 글로벌 창업 서머스쿨 팀 리더</h3><p>경찰과 상담사를 인터뷰해 심리응급처치 대화를 연습하는 VR 시나리오를 설계했습니다. 팀의 시제품 범위를 조율하고 7월 2일 실리콘밸리 Plug and Play Tech Center에서 영어로 피칭했습니다.</p></div>
+        </article>
+        <article class="cv-entry">
+          <div>2025년 봄</div>
+          <div><h3>Smart Bottle · KAIST 소프트웨어공학</h3><p>4인 팀에서 스마트 물병과 Android 앱의 연결을 맡았습니다. Kotlin으로 BLE 장치를 검색하고 알림을 구독해 센서값을 받았으며, 받은 값이 Compose 홈 화면에 표시되도록 연결했습니다.</p><a class="entry-link" href="smart-bottle.html">구현 과정과 코드</a></div>
+        </article>
+        <article class="cv-entry">
+          <div>2025년 봄</div>
+          <div><h3>장내 미생물과 파킨슨병 · KAIST BCS361</h3><p>공개 16S rRNA 데이터를 골라 QIIME 2와 DADA2로 전처리했습니다. 환자군과 대조군 시료를 샘플별 미생물 특징표로 정리해 분류 실험에 사용할 입력을 구성했습니다.</p><a class="entry-link" href="microbiome.html">데이터와 분석 과정</a></div>
         </article>
         <article class="cv-entry">
           <div><time datetime="2024-08">2024.08</time> — <time datetime="2024-12">12</time></div>
           <div><h3>약꾹 · MED-MAX 팀</h3><p>만성질환자를 위한 복약 커뮤니티의 Unity 클라이언트와 UI를 개발했습니다. 로그인 흐름을 서버에 연결하고 가상 공간에서 여러 사용자의 이동과 상태를 동기화했습니다.</p></div>
+        </article>
+        <article class="cv-entry" id="literacy">
+          <div>2023년 겨울</div>
+          <div><h3>Google Solution Challenge · 읽기 연습 웹앱</h3><p>읽기에 어려움을 겪는 사용자가 속도와 독해력을 연습하는 웹앱에서 프런트엔드를 맡았습니다. Figma에서 글의 가독성과 화면 흐름을 설계하고, React로 페이지와 라우팅을 구현했습니다. 로그인 화면은 Firebase 인증과 연결했습니다.</p></div>
         </article>
       </div>
     </section>
     <section class="cv-block" aria-labelledby="awards">
       <h2 id="awards">수상</h2>
       <div>
+        <article class="cv-entry">
+          <div>2026.09</div>
+          <div><h3>제8회 법학경시대회 · 종합 최우수상, 민법 은상</h3><p>헌법·민법·형법을 평가한 대회에서 종합 최우수상과 민법 부문 은상을 받았습니다.</p><a class="entry-link" href="https://www.gosiweek.com/article/1065603506969071">피앤피뉴스 수상 기사 ↗</a></div>
+        </article>
+        <article class="cv-entry">
+          <div>2026</div>
+          <div><h3>KAIST 글로벌 창업 서머스쿨 · Best Epilogue</h3><p>실리콘밸리에서 팀을 이끈 경험을 돌아본 글 ‘Dreaming Beyond the Comfort Zone’이 올해의 Best Epilogue로 선정됐습니다.</p><a class="entry-link" href="https://kgep.kaist.ac.kr/boards_view/view/v_gess_past_pgm_en/2026#c03">KAIST 선정 기록과 에필로그 읽기 ↗</a></div>
+        </article>
         <article class="cv-entry">
           <div><time datetime="2024">2024</time></div>
           <div><h3>Tech for Impact 사회가치상</h3><p>복약 커뮤니티 ‘약꾹’으로 MED-MAX 팀이 수상했습니다.</p></div>

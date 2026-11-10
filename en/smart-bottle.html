@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Bottle · Juyoung Lee</title>
+  <meta name="description" content="On a four-person team, I programmed the bottle’s Arduino and built its Bluetooth connection to an Android app. I also helped trace readings from the device through the app to the team’s server.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../smart-bottle.html">
+<link rel="alternate" hreflang="en" href="smart-bottle.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../smart-bottle.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">IoT · Software Engineering at KAIST</p>
+      <h1 class="case-title">Smart Bottle</h1>
+      <p class="case-lede"><strong>Reading water levels from a bottle cap to a phone</strong><br>On a four-person team, I programmed the bottle’s Arduino and built its Bluetooth connection to an Android app. I also helped trace readings from the device through the app to the team’s server.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Spring 2025</dd></div>
+        <div><dt>My role</dt><dd>Hardware control, Android BLE integration, and integration testing</dd></div>
+        <div><dt>Tools</dt><dd>Arduino, HM-10, Kotlin, Jetpack Compose</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure">
+      <img src="../assets/smart-bottle-prototype.webp" alt="A transparent bottle with an LED strip on its side and a sensor on the cap, wired to an Arduino board during the demo.">
+      <figcaption>The prototype from our final demonstration. An ultrasonic sensor in the cap measured the distance to the water, and a strip of LEDs showed the water level.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>From distance to volume</h2>
+        <p>I mounted an ultrasonic sensor in the cap and used the echo’s travel time to calculate the distance to the water surface. Subtracting that distance from the empty-bottle reading gave the water height. The firmware used the bottle’s cross-sectional area to estimate the volume remaining and lit the LEDs according to the water level.</p>
+      </section>
+      <section>
+        <h2>Making a missing reading visible</h2>
+        <p>The sensor and phone could each work in isolation while no reading appeared on screen. I added a readout to the Android app so we could compare the string sent through the HM-10 module with the value the phone received. From there we checked the app’s request and the server’s response to locate the break in the chain.</p>
+      </section>
+      <section>
+        <h2>Agreeing on what a reading means</h2>
+        <p>Our team wrote the requirements and design documents and integrated the app with a FastAPI and MongoDB backend. Testing brought out a distinction that mattered across every interface. The amount left in a bottle and the amount a person drank describe different things. I learned to agree on what a value means, its unit, and where we can verify it before connecting the next component.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/SmartBottle">Project repository <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/CS30500/FrontEnd/commit/6819891ba4da3e7fe3cb00e8ea1581651d0f5403">Android BLE implementation <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/CS30500/FrontEnd/commit/5ad1bdae50933f01ed63827a72c0e3551aeb9081">On-screen BLE readout change <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="med-max.html" rel="prev"><span aria-hidden="true">←</span> Previous project · MED-MAX</a>
+      <a href="microbiome.html" rel="next">Next project · Gut Microbiome and Parkinson’s Disease <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

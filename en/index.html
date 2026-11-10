@@ -11,7 +11,7 @@
   <meta property="og:locale" content="en_US">
   <title>Juyoung Lee · 이주영 | Portfolio</title>
   <link rel="icon" href="../assets/mark.png">
-  <link rel="stylesheet" href="../style.css?v=portrait-2">
+  <link rel="stylesheet" href="../style.css?v=portfolio-3">
 <link rel="alternate" hreflang="ko" href="../index.html">
 <link rel="alternate" hreflang="en" href="index.html">
 </head>
@@ -33,8 +33,8 @@
       <h1 id="name" lang="en">Juyoung Lee</h1>
       <div class="profile-card">
       <p class="alias" lang="ko">이주영</p>
-      <p>Hi, I’m Juyoung. I study computer science at KAIST. I watch how people use new technology and build software to solve problems they run into.</p>
-      <p>I’ve designed VR training for psychological first aid based on interviews with police officers and counselors. I’ve also built a tool that traces vulnerable packages to the software assets that contain them. My interests include XR interaction and graph modeling.</p>
+      <p>Hi, I’m Juyoung. I’m majoring in computer science and pursuing a minor in electrical engineering at KAIST. I watch how people use new technology and build software to solve problems they run into.</p>
+      <p>At the Global Entrepreneurship Summer School, I pitched a VR training prototype in Silicon Valley after interviewing police officers and counselors. I’m now working with Quad Miners in KAIST’s Computer Science Project course to trace vulnerable packages to the software assets that contain them.</p>
       <div class="actions">
         <a class="btn primary" href="cv.html">View CV <span aria-hidden="true">→</span></a>
         <a class="btn" href="#work">View projects <span aria-hidden="true">↓</span></a>
@@ -58,21 +58,21 @@
     </div>
   </section>
   <section class="work shell" id="work" aria-labelledby="work-title">
-    <div class="section-head"><div><p class="eyebrow">Portfolio</p><h2 id="work-title">Selected projects</h2></div><p class="section-note">2024 — 2026</p></div>
+    <div class="section-head"><div><p class="eyebrow">Portfolio</p><h2 id="work-title">Selected projects</h2></div><p class="section-note">2023 — 2026</p></div>
     <div class="project-list">
       <a class="project-row" href="sbom.html">
         <div class="preview sbom"><img src="../assets/sbom-atlas.webp" alt="" width="160" height="100" loading="lazy"></div>
-        <div class="project-info"><p class="project-meta">2026 <span>·</span> Solo project</p><h3>SBOM Vulnerability Analysis</h3><p>Enter a CVE identifier to find assets that contain the vulnerable component and see the evidence behind each match.</p></div>
+        <div class="project-info"><p class="project-meta">2026 <span>·</span> KAIST Computer Science Project × Quad Miners</p><h3>Visualizing Vulnerability Propagation with SBOMs</h3><p>Look up a vulnerability to find which software assets need attention, then follow each match to the affected package.</p></div>
         <span class="open-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="project-row" href="convrsation.html">
         <div class="preview"><img src="../assets/gess-link.webp" alt="" width="160" height="100" loading="lazy"></div>
-        <div class="project-info"><p class="project-meta">2026 <span>·</span> GESS team lead</p><h3>conVRsation</h3><p>I interviewed police officers and counselors to find gaps in their training and designed a VR scenario for practicing psychological first aid.</p></div>
+        <div class="project-info"><p class="project-meta">2026 <span>·</span> Global Entrepreneurship Summer School · Team lead</p><h3>conVRsation</h3><p>I designed a VR scenario for practicing the first conversation with someone in crisis and pitched our prototype at Plug and Play Tech Center in Silicon Valley.</p></div>
         <span class="open-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="project-row" href="blindspotter.html">
         <div class="preview blind"><img src="../assets/blind-training-graph.webp" alt="" width="160" height="100" loading="lazy"></div>
-        <div class="project-info"><p class="project-meta">2026 <span>·</span> Graph features and model evaluation</p><h3>BlindSpotter</h3><p>I compared spatiotemporal graph models that predict when pedestrians and other road users may emerge from blind spots.</p></div>
+        <div class="project-info"><p class="project-meta">2026 <span>·</span> Graph features and model evaluation</p><h3>BlindSpotter</h3><p>I turned IMPTC intersection trajectories into frame-by-frame graphs and compared three models for predicting e-scooter appearances near blind spots.</p></div>
         <span class="open-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="project-row" href="tidal.html">
@@ -85,13 +85,32 @@
         <div class="project-info"><p class="project-meta">2024 <span>·</span> Unity client development</p><h3>MED-MAX <span class="ko-title" lang="ko">약꾹</span></h3><p>I connected sign-in to a shared virtual space for people taking long-term medication and synchronized each user’s movement and state.</p></div>
         <span class="open-arrow" aria-hidden="true">↗</span>
       </a>
+      <a class="project-row" href="smart-bottle.html">
+        <div class="preview bottle"><img src="../assets/smart-bottle-prototype.webp" alt="" loading="lazy"></div>
+        <div class="project-info"><p class="project-meta">2025 · Software engineering team project</p><h3>Smart Bottle</h3><p>I connected a water bottle to our Android app over BLE. The case study follows a sensor reading from the prototype to the code that displays it.</p></div>
+        <span class="open-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="project-row" href="microbiome.html">
+        <div class="preview reads"><img src="../assets/microbiome-read-counts.png" alt="" loading="lazy"></div>
+        <div class="project-info"><p class="project-meta">2025 · KAIST BCS361</p><h3>Gut Microbiome and Parkinson’s Disease</h3><p>I processed public 16S rRNA sequences into a table of the microbial variants in each sample to prepare a comparison of Parkinson’s cases and controls.</p></div>
+        <span class="open-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="project-index">
+      <h3>More projects</h3>
+      <ul>
+        <li><a href="cv.html#hci-research"><strong>EmbleMR</strong><span class="summary">We compared three ways of giving commands to real-world objects in mixed reality.</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="cv.html#preference-research"><strong>Bayesian Preference Learning</strong><span class="summary">I studied how far apart to place the options when learning someone’s preferences from repeated choices.</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="cv.html#live-concert"><strong>KAIST Live Concert</strong><span class="summary">I fixed a VR camera that followed the wrong avatar when another participant joined the concert.</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="cv.html#literacy"><strong>Reading Practice Web App</strong><span class="summary">I built the React interface and connected sign-in to Firebase for a reading practice app.</span><span class="index-arrow" aria-hidden="true">→</span></a></li>
+      </ul>
     </div>
   </section>
   <section class="history" aria-labelledby="history-title"><div class="shell">
     <div class="section-head"><div><p class="eyebrow">Background</p><h2 id="history-title">Experience</h2></div><a class="simple-link" href="cv.html">Full CV <span aria-hidden="true">→</span></a></div>
     <dl class="timeline">
       <div><dt>May – Aug 2026</dt><dd><strong>KAIST WIT Lab</strong><span>Undergraduate researcher · Mixed reality input methods and user studies</span></dd></div>
-      <div><dt>Mar – Jul 2026</dt><dd><strong>Global Entrepreneurship Summer School (GESS)</strong><span>conVRsation team lead · User interviews and a demo pitch in Silicon Valley</span></dd></div>
+      <div><dt>Mar – Jul 2026</dt><dd><strong>KAIST Global Entrepreneurship Summer School</strong><span>conVRsation team lead · Silicon Valley demo pitch · <a href="https://kgep.kaist.ac.kr/boards_view/view/v_gess_past_pgm_en/2026#c03">Read my Best Epilogue essay ↗</a></span></dd></div>
       <div><dt>Dec 2024 – Feb 2025</dt><dd><strong>Overay</strong><span>XR development intern · Unity interactions and multiplayer avatars</span></dd></div>
     </dl>
   </div></section>

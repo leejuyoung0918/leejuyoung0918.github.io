@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BlindSpotter · Juyoung Lee</title>
-  <meta name="description" content="I built graphs linking vehicles, pedestrians and occluded areas in a traffic scene, then tested how much past movement helped predict the appearance of pedestrians and e-scooter riders.">
+  <meta name="description" content="I turned IMPTC intersection trajectories into graphs and compared single-frame and five-frame models for predicting appearances near blind spots.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="../assets/mark.png">
   <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
@@ -29,7 +29,7 @@
     <header class="case-head">
       <p class="eyebrow"><span lang="en">Graph machine learning</span> · Model development</p>
       <h1 class="case-title">BlindSpotter</h1>
-      <p class="case-lede"><strong>Predicting when a road user will emerge from a blind spot</strong><br>I built graphs linking vehicles, pedestrians and occluded areas in a traffic scene, then tested how much past movement helped predict the appearance of pedestrians and e-scooter riders.</p>
+      <p class="case-lede"><strong>Will someone appear from behind that vehicle?</strong><br>When a bus blocks a driver’s view of an intersection, what can the last few frames tell us? Using IMPTC trajectories, I designed features describing how road users move around one another, then implemented and compared models that see one frame or five.</p>
       <dl class="case-meta">
         <div><dt>Period</dt><dd>March – June 2026</dd></div>
         <div><dt>My role</dt><dd>Designed graph features, implemented models and evaluated their predictions</dd></div>
@@ -42,19 +42,33 @@
     </figure>
     <div class="case-text">
       <section>
-        <h2>Representing a blind spot as a node</h2>
-        <p>We studied situations such as a pedestrian emerging from behind a parked car or bus. Our team represented vehicles, vulnerable road users and the blind spots themselves as graph nodes. For each blind spot, the model predicted whether a road user would appear there in the near future.</p>
+        <h2>Trajectories from a German intersection</h2>
+        <p>IMPTC is an open dataset collected with cameras and LiDAR at a single urban intersection in Germany. We read vehicle, pedestrian, cyclist and e-scooter tracks from sets 01–05. Matching positions and velocities by timestamp gave us a picture of who was in the intersection at each frame.</p>
       </section>
       <section>
-        <h2>Comparing one frame with five</h2>
-        <p>I standardized the format of features such as position, distance, direction and relative speed. I capped extreme time-to-collision (TTC) values and applied a log transform. Because appearances were rare, I evaluated precision-recall and ROC curves as well as F1 across a range of decision thresholds.</p>
+        <h2>Drawing the area behind a vehicle</h2>
+        <p>We used the vehicle with the longest track in a scene as the reference. From its viewpoint, we estimated the area hidden behind a vehicle such as a bus or truck as a polygon. Each hidden area became a graph node alongside the road users. Edges connected nodes within 30 metres of each other.</p>
       </section>
       <section>
-        <h2>What past movement added</h2>
-        <p>In our team’s controlled experiment, we split the data by scene. The five-frame Social + ST-GCN model achieved an AUPRC of 0.4573, an AUROC of 0.8801 and a best F1 of 0.5481. EIGAT, which modeled spatial relationships in a single frame, reached an AUPRC of 0.3183. These scores measure how well the models predicted road-user appearances as defined in the project dataset.</p>
+        <h2>What counts as an appearance?</h2>
+        <p>The public preprocessing code labels a blind spot positive if an e-scooter is observed inside its polygon or within six metres of its centre during the next three seconds. That rule lets us use future trajectories to train a model to anticipate an appearance near each blind spot.</p>
+      </section>
+      <section>
+        <h2>When two objects barely close the gap</h2>
+        <p>My edge features included distance, relative velocity, the difference in heading and estimated time to collision (TTC). When two objects approached each other very slowly, TTC could become extremely large. I limited it to 0–30 seconds and applied a log transform to reduce the influence of those values.</p>
+      </section>
+      <section>
+        <h2>Keeping entire scenes together</h2>
+        <p>The same people and vehicles appear in neighbouring frames. We split whole scenes into training, validation and test sets at 70%, 15% and 15%. About 1.2% of the test examples were positive, so we used area under the precision–recall curve (AUPRC) to assess how often a model found those cases and how many false alarms it raised.</p>
+      </section>
+      <section>
+        <h2>What the five-frame model picked up</h2>
+        <p>The single-frame models reached test AUPRC scores of 0.3183 for EIGAT and 0.0147 for MR-GCN. The five-frame Social-STGCNN scored highest at 0.4573, with an AUROC of 0.8801 and a best F1 of 0.5481. All three models were evaluated on held-out scenes from the same intersection.</p>
       </section>
       <div class="case-links">
-        <a href="https://github.com/leejuyoung0918/BlindSpotter">Explore the models and experiments on GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://zenodo.org/records/14811016">IMPTC dataset <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/BlindSpotter/blob/main/src/graph_builder.py">Graph construction code <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/BlindSpotter/blob/main/outputs/results/three_models_comparison.md">Results for all three models <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <nav class="case-next" aria-label="Project navigation">

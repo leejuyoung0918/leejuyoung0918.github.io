@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>장내 미생물과 파킨슨병 · 이주영 포트폴리오</title>
+  <meta name="description" content="파킨슨병 환자군과 대조군은 장내 미생물 구성에서 어떤 차이를 보일까? 공개 염기서열 자료 두 건을 골라 읽기 수를 살펴보고, 시료별 미생물 서열을 비교할 수 있는 표를 만들었습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="microbiome.html">
+<link rel="alternate" hreflang="en" href="en/microbiome.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/microbiome.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow">생물정보학 · KAIST BCS361</p>
+      <h1 class="case-title">장내 미생물과 파킨슨병</h1>
+      <p class="case-lede"><strong>공개 16S 서열에서 머신러닝 입력표를 만들기까지</strong><br>파킨슨병 환자군과 대조군은 장내 미생물 구성에서 어떤 차이를 보일까? 공개 염기서열 자료 두 건을 골라 읽기 수를 살펴보고, 시료별 미생물 서열을 비교할 수 있는 표를 만들었습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2025.03 – 2025.06</dd></div>
+        <div><dt>분석 대상</dt><dd>장내 미생물 16S rRNA 유전자 서열</dd></div>
+        <div><dt>도구</dt><dd>QIIME 2, DADA2, Docker, Google Colab</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure">
+      <img src="assets/microbiome-read-counts.png" alt="정방향 서열 수가 가로축, 시료 수가 세로축인 히스토그램. 시료별 읽기 수는 97개에서 361,849개까지 분포한다.">
+      <figcaption>PRJEB27564의 시퀀싱 기록 300건을 QIIME 2로 요약한 원본 그래프. 가로축은 기록당 정방향 서열 읽기 수, 세로축은 해당 구간에 속하는 기록 수입니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>원자료를 고르는 기준</h2>
+        <p>유럽 염기서열 아카이브(ENA)에서 환자군과 대조군이 있고, DNA 양 끝을 읽은 16S 자료를 찾았습니다. 선정한 자료는 PRJEB55464와 PRJEB27564입니다. 두 번째 자료는 시퀀싱 기록별로 정방향·역방향 파일을 짝지어 QIIME 2 입력 목록을 만들었습니다.</p>
+      </section>
+      <section>
+        <h2>서열 파일을 시료별 표로</h2>
+        <p>한 시료에서 읽힌 서열 수는 적게는 97개, 많게는 361,849개였습니다. 이 차이를 먼저 확인한 뒤, 시험 데이터에서 DADA2로 서열 오류와 키메라를 걸러냈습니다. 각 시료에서 서로 구별되는 서열 변이(ASV)가 몇 번 관찰됐는지 표로 만들고, 대표 서열에 미생물 분류명을 붙였습니다.</p>
+      </section>
+      <section>
+        <h2>끊긴 분석을 이어서 실행하기</h2>
+        <p>대표 서열을 분류할 때 메모리가 부족해 Colab 실행이 중간에 멈췄습니다. Docker로 QIIME 2 버전을 고정하고 단계별 산출물을 저장해 멈춘 지점부터 이어갈 수 있게 했습니다. 이렇게 준비한 표로 환자군과 대조군을 구분하는 랜덤 포레스트를 탐색했고, 개별 예측에 기여한 특징을 살펴보는 방법으로 SHAP을 제안했습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB55464">ENA 원자료 · PRJEB55464 <span aria-hidden="true">↗</span></a>
+        <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB27564">ENA 원자료 · PRJEB27564 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="smart-bottle.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · Smart Bottle</a>
+      <a href="sbom.html" rel="next">다음 프로젝트 · SBOM 취약점 전파 가시화 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BlindSpotter · 이주영 포트폴리오</title>
-  <meta name="description" content="주행 장면 속 차량, 보행자, 가려진 공간을 그래프로 연결하고, 과거 프레임이 보행자와 전동킥보드의 출현 예측에 얼마나 도움이 되는지 비교했습니다.">
+  <meta name="description" content="독일 교차로에서 수집한 IMPTC 궤적을 그래프로 바꾸고, 한 프레임과 다섯 프레임으로 사각지대 주변의 출현을 얼마나 잘 예측하는지 비교했습니다.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/mark.png">
   <link rel="stylesheet" href="style.css?v=white-bilingual-1">
@@ -29,7 +29,7 @@
     <header class="case-head">
       <p class="eyebrow"><span lang="en">Graph machine learning</span> · 모델 개발</p>
       <h1 class="case-title">BlindSpotter</h1>
-      <p class="case-lede"><strong>사각지대에서 누가 나타날지 예측하기</strong><br>주행 장면 속 차량, 보행자, 가려진 공간을 그래프로 연결하고, 과거 프레임이 보행자와 전동킥보드의 출현 예측에 얼마나 도움이 되는지 비교했습니다.</p>
+      <p class="case-lede"><strong>차량 뒤 사각지대에 누군가 나타날까?</strong><br>교차로에서 버스가 시야를 가릴 때, 직전 몇 프레임의 움직임이 단서가 될까요? 팀에서 저는 IMPTC 궤적으로 차량과 도로 이용자 사이의 관계를 표현하고, 한 프레임과 다섯 프레임을 보는 모델을 구현해 비교했습니다.</p>
       <dl class="case-meta">
         <div><dt>기간</dt><dd>2026.03 – 2026.06</dd></div>
         <div><dt>담당</dt><dd>그래프 특징 설계, 모델 구현과 평가</dd></div>
@@ -42,19 +42,33 @@
     </figure>
     <div class="case-text">
       <section>
-        <h2>가려진 공간도 하나의 노드로</h2>
-        <p>주차 차량이나 버스 뒤에서 보행자가 나타나는 상황을 다뤘습니다. 팀은 차량과 취약 도로 이용자(VRU)에 더해 사각지대 자체를 그래프의 노드로 표현했습니다. 모델이 맞히는 대상은 가까운 미래에 해당 영역에서 도로 이용자가 관측되는지입니다.</p>
+        <h2>교차로에서 수집한 이동 궤적</h2>
+        <p>IMPTC는 독일 도심 교차로 한 곳을 여러 방향의 카메라와 LiDAR로 관측한 공개 데이터셋입니다. 팀은 set01–05에서 차량과 보행자·자전거·전동킥보드의 궤적 파일을 읽고, 시각이 같은 위치와 속도를 묶어 한 프레임의 장면을 구성했습니다.</p>
       </section>
       <section>
-        <h2>하나의 장면과 다섯 프레임 비교</h2>
-        <p>모델 입력에 위치·거리·방향·상대속도 등 관계 특징을 담고 형식을 통일했습니다. 값이 크게 튀는 충돌 예측 시간(TTC)에는 상한과 로그 변환을 적용했습니다. 출현 사례가 드문 데이터여서 AUPRC, AUROC, F1을 함께 보고 판정 임계값도 바꾸어 비교했습니다.</p>
+        <h2>차량 뒤 공간을 그래프에 옮기기</h2>
+        <p>장면에서 가장 오래 관측된 차량을 기준으로 삼았습니다. 그 차에서 볼 때 버스나 트럭 뒤로 가려지는 공간을 다각형으로 추정하고, 각 영역을 도로 이용자와 함께 그래프의 노드로 넣었습니다. 30m 안의 노드를 연결해 주변의 움직임을 함께 읽도록 했습니다.</p>
       </section>
       <section>
-        <h2>출현 예측에서 얻은 결과</h2>
-        <p>장면 단위로 데이터를 나눈 팀 통제실험에서 다섯 프레임을 사용한 Social + ST-GCN의 AUPRC는 0.4573, AUROC는 0.8801, 최고 F1은 0.5481이었습니다. 한 프레임의 공간 관계를 사용한 EIGAT의 AUPRC는 0.3183이었습니다. 수치는 프로젝트 데이터에서 정의한 출현 여부를 분류한 결과입니다.</p>
+        <h2>‘출현’을 어떻게 판정할까?</h2>
+        <p>공개 전처리 코드에서는 이후 3초 동안 전동킥보드가 사각지대 다각형 안이나 그 중심에서 6m 이내에 관측되면 해당 영역에 양성 라벨을 붙입니다. 이렇게 미래 궤적에서 만든 정답으로 사각지대 주변의 출현 여부를 학습했습니다.</p>
+      </section>
+      <section>
+        <h2>속도가 비슷할 때 생긴 문제</h2>
+        <p>제가 설계한 간선 특징에는 거리, 상대속도, 진행 방향 차이와 예상 충돌 시간(TTC)이 들어갑니다. 두 물체가 서로 가까워지는 속도가 0에 가까우면 TTC가 크게 튀었습니다. 입력값을 0~30초로 제한하고 로그 변환해 극단값의 영향을 줄였습니다.</p>
+      </section>
+      <section>
+        <h2>같은 장면이 시험에 다시 나오지 않도록</h2>
+        <p>연속 프레임에는 같은 차량과 보행자가 반복해서 등장합니다. 같은 장면 전체가 한 묶음에만 들어가도록 학습·검증·테스트를 70·15·15%로 나눴습니다. 테스트에서 출현으로 표시된 사례가 약 1.2%여서, 드문 출현을 얼마나 찾아내고 오경보를 얼마나 내는지 함께 보여주는 AUPRC를 주 지표로 삼았습니다.</p>
+      </section>
+      <section>
+        <h2>다섯 프레임을 본 모델의 결과</h2>
+        <p>테스트 AUPRC는 단일 프레임 모델인 EIGAT에서 0.3183, MR-GCN에서 0.0147이었습니다. 다섯 프레임을 사용한 Social-STGCNN이 0.4573으로 가장 높았고, AUROC는 0.8801, 최고 F1은 0.5481이었습니다. 세 모델 모두 같은 교차로에서 학습에 쓰지 않은 장면으로 평가했습니다.</p>
       </section>
       <div class="case-links">
-        <a href="https://github.com/leejuyoung0918/BlindSpotter">GitHub에서 모델과 실험 보기 <span aria-hidden="true">↗</span></a>
+        <a href="https://zenodo.org/records/14811016">IMPTC 원본 데이터 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/BlindSpotter/blob/main/src/graph_builder.py">장면을 그래프로 바꾸는 코드 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/BlindSpotter/blob/main/outputs/results/three_models_comparison.md">세 모델의 실험 결과 <span aria-hidden="true">↗</span></a>
       </div>
     </div>
     <nav class="case-next" aria-label="프로젝트 탐색">

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SBOM 취약점 영향 분석 · 이주영 포트폴리오</title>
-  <meta name="description" content="취약점 번호 하나를 입력하면 해당 구성요소를 포함한 자산과 그 판단의 근거를 함께 볼 수 있는 도구를 만들었습니다.">
+  <title>SBOM 취약점 전파 가시화 · 이주영 포트폴리오</title>
+  <meta name="description" content="KAIST 전산학 프로젝트 수업에서 쿼드마이너와 협업해 취약한 소프트웨어 구성요소가 어느 자산에 포함됐는지 추적하는 도구를 개발하고 있습니다.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/mark.png">
   <link rel="stylesheet" href="style.css?v=white-bilingual-1">
@@ -27,12 +27,12 @@
   <main class="case shell" id="main">
     <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
     <header class="case-head">
-      <p class="eyebrow"><span lang="en">Security engineering</span> · 개인 개발</p>
-      <h1 class="case-title">SBOM 취약점 영향 분석</h1>
-      <p class="case-lede"><strong>취약점이 발견되면, 어느 자산을 확인해야 할까?</strong><br>취약점 번호 하나를 입력하면 해당 구성요소를 포함한 자산과 그 판단의 근거를 함께 볼 수 있는 도구를 만들었습니다.</p>
+      <p class="eyebrow">KAIST 전산학 프로젝트 · 쿼드마이너 협업</p>
+      <h1 class="case-title">SBOM 취약점 전파 가시화</h1>
+      <p class="case-lede"><strong>취약점이 발견되면, 어느 자산을 확인해야 할까?</strong><br>KAIST 전산학 프로젝트 수업에서 보안 기업 쿼드마이너와 함께 이 문제를 다루고 있습니다. 저는 취약점 번호로 검색하면 해당 패키지를 포함한 자산과 그 근거가 된 스캔 결과까지 따라갈 수 있는 도구를 구현했습니다.</p>
       <dl class="case-meta">
         <div><dt>기간</dt><dd>2026.09 – 진행 중</dd></div>
-        <div><dt>담당</dt><dd>수집·정규화부터 API와 조회 화면까지</dd></div>
+        <div><dt>담당</dt><dd>스캔 결과 수집·정규화, 그래프 구성, API와 조회 화면 구현</dd></div>
         <div><dt>도구·방법</dt><dd>Python, FastAPI, NetworkX, Cytoscape.js</dd></div>
       </dl>
     </header>
@@ -58,7 +58,7 @@
       </div>
     </div>
     <nav class="case-next" aria-label="프로젝트 탐색">
-      <a href="med-max.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · MED-MAX</a>
+      <a href="microbiome.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · 장내 미생물과 파킨슨병</a>
       <a href="convrsation.html" rel="next">다음 프로젝트 · conVRsation <span aria-hidden="true">→</span></a>
     </nav>
   </main>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gut Microbiome and Parkinson’s Disease · Juyoung Lee</title>
+  <meta name="description" content="Do gut microbial communities differ between people with Parkinson’s disease and healthy controls? I selected two public sequencing datasets, inspected the read counts, and built a table for comparing microbial sequence variants across samples.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+<link rel="alternate" hreflang="ko" href="../microbiome.html">
+<link rel="alternate" hreflang="en" href="microbiome.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../microbiome.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">Bioinformatics · KAIST BCS361</p>
+      <h1 class="case-title">Gut Microbiome and Parkinson’s Disease</h1>
+      <p class="case-lede"><strong>From public 16S sequences to a table for machine learning</strong><br>Do gut microbial communities differ between people with Parkinson’s disease and healthy controls? I selected two public sequencing datasets, inspected the read counts, and built a table for comparing microbial sequence variants across samples.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Mar – Jun 2025</dd></div>
+        <div><dt>Data</dt><dd>Gut microbiome 16S rRNA gene sequences</dd></div>
+        <div><dt>Tools</dt><dd>QIIME 2, DADA2, Docker, Google Colab</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure">
+      <img src="../assets/microbiome-read-counts.png" alt="Histogram of forward read counts per sample. Counts span 97 to 361,849 reads across the sequencing runs.">
+      <figcaption>Original QIIME 2 output for 300 sequencing runs from PRJEB27564. The horizontal axis shows forward reads per run. The vertical axis counts the runs in each interval.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Choosing the source data</h2>
+        <p>I looked in the European Nucleotide Archive for studies with paired-end 16S reads and both Parkinson’s and control groups. I selected PRJEB55464 and PRJEB27564. For the second study, I matched forward and reverse files by sequencing run and listed each pair in a manifest for QIIME 2.</p>
+      </section>
+      <section>
+        <h2>From reads to a feature table</h2>
+        <p>Forward read counts ranged from 97 to 361,849 per sample in the second dataset. After checking that spread, I used DADA2 on test data to remove sequencing errors and chimeras. The resulting table recorded how often each distinct amplicon sequence variant (ASV) occurred in each sample. I also inspected the taxonomic assignments for representative sequences.</p>
+      </section>
+      <section>
+        <h2>Resuming an interrupted run</h2>
+        <p>The Colab session ran out of memory during taxonomic classification. I pinned the QIIME 2 version in Docker and saved the output of each stage so I could resume from the last completed step. With the table ready, I explored a random forest for distinguishing the two groups and proposed using SHAP to examine which features contributed to individual predictions.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB55464">ENA dataset · PRJEB55464 <span aria-hidden="true">↗</span></a>
+        <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB27564">ENA dataset · PRJEB27564 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="smart-bottle.html" rel="prev"><span aria-hidden="true">←</span> Previous project · Smart Bottle</a>
+      <a href="sbom.html" rel="next">Next project · SBOM Vulnerability Propagation <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>
