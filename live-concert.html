@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KAIST Live Concert · 이주영 포트폴리오</title>
+  <meta name="description" content="Overay 인턴십에서 VR 공연장에 새 관객이 입장할 때 기존 관객의 시점이 바뀌는 오류를 추적하고 무대 조명 제어를 개선했습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="live-concert.html">
+<link rel="alternate" hreflang="en" href="en/live-concert.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/live-concert.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow">다중 사용자 VR · Overay XR 개발 인턴</p>
+      <h1 class="case-title">KAIST Live Concert</h1>
+      <p class="case-lede"><strong>새 관객이 입장하자 내 시점이 그 사람에게 넘어갔습니다.</strong><br>여러 사람이 아바타로 접속하는 VR 공연장에서 일어난 문제였습니다. Overay 인턴십 후반에 아바타와 헤드셋의 움직임을 연결하고, 사용자가 조절한 무대 색상이 조명과 빛줄기에 함께 반영되도록 수정했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2024.12 – 2025.02 인턴십 후반</dd></div>
+        <div><dt>담당</dt><dd>XR 개발 인턴 · 아바타 동기화, 시점 제어, 무대 조명</dd></div>
+        <div><dt>도구</dt><dd>Unity, C#, Normcore, Meta Avatar SDK</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure" aria-labelledby="figure-heading">
+      <h2 id="figure-heading">입장 전후에 추적한 두 상태</h2>
+      <dl class="case-meta">
+        <div><dt>내 헤드셋</dt><dd>내 기기에서 측정한 머리의 위치와 회전이 관객석에서 보이는 장면을 결정합니다.</dd></div>
+        <div><dt>아바타</dt><dd>내 아바타가 이동하고 몸을 돌리면 다른 관객에게도 그 변화가 보여야 합니다.</dd></div>
+        <div><dt>새 관객</dt><dd>새로 생성한 원격 아바타가 기존 사용자의 카메라 제어권을 가져가던 조건을 재현했습니다.</dd></div>
+      </dl>
+      <figcaption>한 기기의 추적 상태와 여러 기기에 공유되는 아바타 상태가 만나는 부분을 점검했습니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>새 아바타가 생기는 순간</h2>
+        <p>새 관객이 접속하기 직전과 직후의 Unity 오브젝트 계층을 비교했습니다. 아바타가 생성될 때 헤드셋의 추적 기준인 XR Origin을 자식으로 연결하는 과정에서 카메라가 원격 아바타를 따라가고 있었습니다. 로컬 사용자가 소유한 아바타에만 XR Origin을 연결하도록 수정했습니다.</p>
+      </section>
+      <section>
+        <h2>고개와 몸을 돌리는 기준</h2>
+        <p>Camera Offset에서 위치와 회전의 변화를 읽어 로컬 아바타에 반영한 뒤 오프셋을 초기화했습니다. 고개를 위아래로 움직이거나 옆으로 기울여도 몸통이 함께 기울지 않도록 몸에는 수직축 회전만 적용했습니다. 일정 각도씩 몸을 돌리는 스냅 턴도 같은 좌표계를 사용하게 했습니다.</p>
+      </section>
+      <section>
+        <h2>조명은 바뀌는데 빛줄기는 그대로였던 이유</h2>
+        <p>무대 색상 조절기를 움직이면 광원의 색은 바뀌었지만 빛줄기를 그리는 재질은 그대로였습니다. 셰이더별로 실제 색상 속성의 이름이 달랐습니다. 빛줄기의 렌더러에서 지원하는 속성을 조회해 색을 적용하고 기기에서 결과를 확인했습니다. 기존 코드를 디버깅할 때는 값을 누가 바꾸는지와 그 값을 받는 쪽이 무엇을 지원하는지를 먼저 살피게 됐습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="tidal.html">같은 인턴십에서 개발한 Tidal Adventure <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="preference-learning.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · 베이지안 선호 학습</a>
+      <a href="reading-app.html" rel="next">다음 프로젝트 · 읽기 연습 웹앱 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

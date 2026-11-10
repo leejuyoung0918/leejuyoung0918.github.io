@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KAIST Live Concert · Juyoung Lee</title>
+  <meta name="description" content="At Overay, I traced a VR camera that jumped to a new participant’s avatar and fixed how a stage color control updated the light beams.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="../live-concert.html">
+<link rel="alternate" hreflang="en" href="live-concert.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../live-concert.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">Multiplayer VR · XR development internship at Overay</p>
+      <h1 class="case-title">KAIST Live Concert</h1>
+      <p class="case-lede"><strong>Another guest joined the concert, and my camera followed them.</strong><br>In our multiplayer VR venue, each guest explored the stage through their own headset. During the second part of my internship at Overay, I worked on avatar movement and camera ownership, as well as the controls for changing the color of the stage lights.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Latter part of my Dec 2024 – Feb 2025 internship</dd></div>
+        <div><dt>My role</dt><dd>XR development intern · avatar synchronization, viewpoint tracking, stage lighting</dd></div>
+        <div><dt>Tools</dt><dd>Unity, C#, Normcore, Meta Avatar SDK</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure" aria-labelledby="figure-heading">
+      <h2 id="figure-heading">Two kinds of state behind one viewpoint</h2>
+      <dl class="case-meta">
+        <div><dt>Headset</dt><dd>The position and rotation tracked on my device determine what I see from the audience.</dd></div>
+        <div><dt>Avatar</dt><dd>Other guests need to see my avatar move and turn as I walk around the venue.</dd></div>
+        <div><dt>New guest</dt><dd>I reproduced the case in which spawning a remote avatar gave it control of the existing player’s camera.</dd></div>
+      </dl>
+      <figcaption>I traced where headset tracking on one device fed into avatar state shared across clients.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>The moment a new avatar spawned</h2>
+        <p>I compared the Unity object hierarchy just before and after a guest joined. The XR Origin, the reference for local headset tracking, was being attached as a child of the newly spawned avatar. I changed the attachment rule so only the avatar owned by the local player could receive the XR Origin.</p>
+      </section>
+      <section>
+        <h2>Keeping head tilt and body rotation separate</h2>
+        <p>I read the change in position and rotation from Camera Offset, applied the movement to the local avatar, and reset the offset. Only rotation about the vertical axis carried over to the avatar’s body, so looking up or tilting my head did not tip the entire avatar. Snap turns used the same frame of reference.</p>
+      </section>
+      <section>
+        <h2>Why the light changed color but its beam stayed the same</h2>
+        <p>Moving the stage color control changed the light source, but the visible beam kept its old color. The beam materials exposed different color properties depending on the shader. I checked which property each renderer supported, updated it, and tested the change on the headset. Both bugs taught me to trace who writes a value and what the receiving component actually reads.</p>
+      </section>
+      <div class="case-links">
+        <a href="tidal.html">Tidal Adventure, from the same internship <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="preference-learning.html" rel="prev"><span aria-hidden="true">←</span> Previous project · Bayesian Preference Learning</a>
+      <a href="reading-app.html" rel="next">Next project · Reading Practice Web App <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

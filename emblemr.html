@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EmbleMR · 이주영 포트폴리오</title>
+  <meta name="description" content="혼합현실에서 시선·손짓, 물체 위의 메뉴, 음성으로 현실 물체에 명령을 내리는 방법을 비교한 사용자 연구입니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="emblemr.html">
+<link rel="alternate" hreflang="en" href="en/emblemr.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/emblemr.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow">혼합현실 인터랙션 · KAIST WIT Lab</p>
+      <h1 class="case-title">EmbleMR</h1>
+      <p class="case-lede"><strong>“이것을 번역해 줘”에서 ‘이것’은 어느 물체일까?</strong><br>같은 요청도 말을 마칠 때쯤 다른 곳을 보고 있으면 엉뚱한 물체에 적용될 수 있습니다. WIT Lab에서 세 가지 입력 방식을 비교하며, 물체 위에 띄우는 메뉴와 음성 입력을 구현하고 어느 순간에 대상이 바뀌는지 분석했습니다.</p>
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2026.05 – 2026.08</dd></div>
+        <div><dt>담당</dt><dd>학부연구생 · UI·음성 입력 구현, 실험 운영과 행동 로그 분석</dd></div>
+        <div><dt>실험</dt><dd>참가자 12명 · 입력 방식 3가지 · 과제 7개</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure" aria-labelledby="figure-heading">
+      <h2 id="figure-heading">한 번의 시도를 되짚는 세 시점</h2>
+      <dl class="case-meta">
+        <div><dt>입력</dt><dd>사용자가 메뉴, 음성, 시선·손짓 중 하나로 명령을 내립니다.</dd></div>
+        <div><dt>대상 확정</dt><dd>시스템이 명령을 적용할 물체를 정합니다. 두 물체를 비교할 때는 양쪽을 모두 구별해야 합니다.</dd></div>
+        <div><dt>결과 표시</dt><dd>결과가 나타난 시점과 성공·재시도·시간 초과 여부를 기록합니다.</dd></div>
+      </dl>
+      <figcaption>이 사건들을 같은 시도의 시선·머리·손 궤적과 연결해 오류가 생긴 지점을 추적했습니다.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>세 방식을 같은 조건에서 비교하기</h2>
+        <p>팀은 시선으로 물체를 가리키고 손짓으로 동작을 요청하는 EmbleMR를 연구했습니다. 저는 비교에 필요한 물체 부착형 UI와 음성 입력을 구현하고, 검색·질문·번역·저장·고정·촬영·비교를 같은 실험 흐름에 연결했습니다. 검색·번역·비교에는 미리 준비한 결과를 사용해 응답 생성 시간의 변동을 줄였습니다.</p>
+      </section>
+      <section>
+        <h2>두 물체를 비교할 때 사라진 대상</h2>
+        <p>음성으로 두 물체를 비교해 달라고 하면, 사용자는 말하는 사이 첫 번째 물체에서 두 번째 물체로 시선을 옮기곤 했습니다. 발화가 끝날 때의 시선만 보면 앞서 가리킨 물체를 놓칠 수 있었습니다. 시선 궤적을 대상 확정·결과 표시 시점과 나란히 보며 입력을 처리하는 데 걸린 시간과 대상 선택 오류를 구분했습니다.</p>
+      </section>
+      <section>
+        <h2>어떤 명령을 내리느냐에 따라 달라진 결과</h2>
+        <p>참가자 12명이 세 입력 방식으로 일곱 과제를 수행했습니다. 입력 방식의 순서를 바꿔 가며 실험했고, 저는 과제별 로그와 오류 분석, 원고 작성에 참여했습니다. 질문을 말로 표현하는 과제에서는 음성이 가장 빨랐습니다. 이 결과를 통해 입력 방식을 고를 때 사용자가 바라볼 물체의 수와 표현할 명령의 성격을 함께 봐야 한다는 점을 배웠습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="cv.html#hci-research">이력에서 WIT Lab 연구 경험 보기 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="microbiome.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · 장내 미생물과 파킨슨병</a>
+      <a href="preference-learning.html" rel="next">다음 프로젝트 · 베이지안 선호 학습 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

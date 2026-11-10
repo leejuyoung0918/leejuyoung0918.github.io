@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading Practice Web App · Juyoung Lee</title>
+  <meta name="description" content="The app was designed for people who wanted to practice reading speed and comprehension. I designed and built the path from sign-in to the home screen so readers could find their next step and focus on the text.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="../reading-app.html">
+<link rel="alternate" hreflang="en" href="reading-app.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../reading-app.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">Google Solution Challenge · Frontend development</p>
+      <h1 class="case-title">Reading Practice Web App</h1>
+      <p class="case-lede"><strong>Designing the path from sign-in to reading practice</strong><br>The app was designed for people who wanted to practice reading speed and comprehension. I designed and built the path from sign-in to the home screen so readers could find their next step and focus on the text.</p>
+    </header>
+    <div class="case-figure">
+      <dl class="case-meta">
+        <div><dt>Date</dt><dd>Winter 2023</dd></div>
+        <div><dt>Role</dt><dd>Interface design and frontend development</dd></div>
+        <div><dt>Tools</dt><dd>Figma, React, React Router, Firebase Authentication</dd></div>
+      </dl>
+    </div>
+    <div class="case-text">
+      <section>
+        <h2>What should the reader see first?</h2>
+        <p>Reading a menu or a set of instructions also takes effort. In Figma, I worked out the order in which information should appear on the sign-in and home screens. The design gave priority to what readers needed to look at first and what action they could take next.</p>
+      </section>
+      <section>
+        <h2>Connecting sign-in to the app</h2>
+        <p>I built the sign-in and home pages in React and used React Router for navigation. I connected the form to Firebase Authentication, managed the signed-in state and handled authentication errors.</p>
+      </section>
+      <section>
+        <h2>What I learned from the screen transitions</h2>
+        <p>Designing sign-in and the home screen together made me consider how much a reader needed to read and do just to navigate between them. In an app for reading practice, every instruction and transition also contributes to the reader’s workload.</p>
+      </section>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="live-concert.html" rel="prev"><span aria-hidden="true">←</span> Previous project · KAIST Live Concert</a>
+      <a href="sbom.html" rel="next">Next project · Visualizing Vulnerability Propagation with SBOMs <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

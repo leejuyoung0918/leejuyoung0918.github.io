@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>베이지안 선호 학습 · 이주영 포트폴리오</title>
+  <meta name="description" content="가장 마음에 드는 이미지를 고르는 일은 쉽지만, 자신이 좋아하는 모양을 숫자로 설명하기는 어렵습니다. 여러 후보 중 하나를 고르는 응답으로 선호를 추정하고, 다음 질문에 보여줄 후보를 고르는 알고리즘을 만들었습니다.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/mark.png">
+  <link rel="stylesheet" href="style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="preference-learning.html">
+<link rel="alternate" hreflang="en" href="en/preference-learning.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="언어 선택"><span lang="ko" aria-current="true">한국어</span><a data-language-link href="en/preference-learning.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
+    <header class="case-head">
+      <p class="eyebrow">M-ary 선호 탐색 · 자율 연구팀</p>
+      <h1 class="case-title">베이지안 선호 학습</h1>
+      <p class="case-lede"><strong>다음 질문에서 후보들을 얼마나 다르게 보여줘야 할까?</strong><br>가장 마음에 드는 이미지를 고르는 일은 쉽지만, 자신이 좋아하는 모양을 숫자로 설명하기는 어렵습니다. 여러 후보 중 하나를 고르는 응답으로 선호를 추정하고, 다음 질문에 보여줄 후보를 고르는 알고리즘을 만들었습니다.</p>
+    </header>
+    <div class="case-figure">
+      <dl class="case-meta">
+        <div><dt>기간</dt><dd>2026.06 – 진행 중</dd></div>
+        <div><dt>담당</dt><dd>질문 생성, 추정치 갱신, 시뮬레이션과 사용자 실험 설계</dd></div>
+        <div><dt>구현 환경</dt><dd>Python · IDEAL-FINDER / 냥픽</dd></div>
+      </dl>
+    </div>
+    <div class="case-text">
+      <section>
+        <h2>처음 방식이 막힌 지점</h2>
+        <p>초기 알고리즘은 선호 위치가 좁혀질수록 다음 질문의 후보들도 더 가까이 배치했습니다. 추정이 정밀해질 즈음에는 작은 응답 오차만 있어도 어느 후보를 골랐다는 사실이 거의 단서가 되지 않았습니다. 추정치의 불확실성과 사람이 구별할 수 있는 후보 간격을 따로 정하는 방식으로 바꿨습니다.</p>
+      </section>
+      <section>
+        <h2>질문 하나를 만드는 코드</h2>
+        <p>현재 선호 추정에서 불확실성이 가장 큰 방향을 찾고, 그 축을 따라 여러 후보를 놓았습니다. 후보 간격에 따라 한 번의 응답으로 얻을 정보를 계산한 뒤 간격을 선택하도록 구현했습니다. 각 질문에서 사용한 후보와 예측 분포, 난수 시드를 기록해 다른 알고리즘에도 같은 조건을 적용했습니다.</p>
+      </section>
+      <section>
+        <h2>같은 500개 환경에서 비교하기</h2>
+        <p>합성 환경 500개에서 기존 방식과 새 방식을 짝지어 비교했습니다. 매우 좁은 오차 범위까지 선호를 추정할 때는 간격을 따로 조절한 쪽이 더 적은 질문으로 도달했습니다. 중간 정밀도에서는 질문 수 이득이 뚜렷하지 않았습니다. 사용자가 사진을 직접 고르는 ‘냥픽’에서는 선택 로그와 평가 지표를 설계해 실제 선택도 살펴볼 수 있게 했습니다.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/pr-eig-theoretical-experiments">실험 코드와 결과 <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/pr-eig-theoretical-experiments/blob/main/policies.py">질문을 고르는 코드 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="프로젝트 탐색">
+      <a href="emblemr.html" rel="prev"><span aria-hidden="true">←</span> 이전 프로젝트 · EmbleMR</a>
+      <a href="live-concert.html" rel="next">다음 프로젝트 · KAIST Live Concert <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="nav.js" defer></script>
+</body>
+</html>

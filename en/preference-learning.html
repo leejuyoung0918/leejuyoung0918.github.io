@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bayesian Preference Learning · Juyoung Lee</title>
+  <meta name="description" content="Picking a favorite image can be easier than describing its features in numbers. I built an algorithm that learns from repeated choices and uses each answer to decide what to show next.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="../preference-learning.html">
+<link rel="alternate" hreflang="en" href="preference-learning.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../preference-learning.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">Multiway preference search · Independent research team</p>
+      <h1 class="case-title">Bayesian Preference Learning</h1>
+      <p class="case-lede"><strong>How far apart should the options in the next question be?</strong><br>Picking a favorite image can be easier than describing its features in numbers. I built an algorithm that learns from repeated choices and uses each answer to decide what to show next.</p>
+    </header>
+    <div class="case-figure">
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>Jun 2026 – present</dd></div>
+        <div><dt>Role</dt><dd>Query design, estimation, simulation and user study design</dd></div>
+        <div><dt>Tools</dt><dd>Python · IDEAL-FINDER / NyangPick</dd></div>
+      </dl>
+    </div>
+    <div class="case-text">
+      <section>
+        <h2>When the options became too similar</h2>
+        <p>Our first algorithm placed the options closer together as it narrowed down the user’s preference. Late in the search, even a little noise in a response left us with almost no information about what the user liked. I changed the design so that the uncertainty in the estimate and the spacing people could distinguish were separate quantities.</p>
+      </section>
+      <section>
+        <h2>Building the next question</h2>
+        <p>I found the direction in which the current estimate was least certain and placed several options along it. I implemented a rule for choosing their spacing based on the information an answer was expected to provide. For each round, I recorded the candidates, the estimated preference distribution and the random seed so methods could be compared under the same conditions.</p>
+      </section>
+      <section>
+        <h2>Comparing 500 matched environments</h2>
+        <p>I compared the methods across 500 synthetic environments. Choosing the spacing separately took fewer questions when the target precision was high. At intermediate precision, there was no clear saving. I also helped design the choice logs and evaluation measures for NyangPick, an interface in which participants pick the photos they prefer.</p>
+      </section>
+      <div class="case-links">
+        <a href="https://github.com/leejuyoung0918/pr-eig-theoretical-experiments">Experiment code and results <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/leejuyoung0918/pr-eig-theoretical-experiments/blob/main/policies.py">Query selection code <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="emblemr.html" rel="prev"><span aria-hidden="true">←</span> Previous project · EmbleMR</a>
+      <a href="live-concert.html" rel="next">Next project · KAIST Live Concert <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>

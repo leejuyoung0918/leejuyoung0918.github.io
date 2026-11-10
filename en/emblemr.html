@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EmbleMR · Juyoung Lee</title>
+  <meta name="description" content="A user study comparing gaze and gesture, object-attached menus, and voice for commands directed at real objects in mixed reality.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/mark.png">
+  <link rel="stylesheet" href="../style.css?v=projects-4">
+<link rel="alternate" hreflang="ko" href="../emblemr.html">
+<link rel="alternate" hreflang="en" href="emblemr.html">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">JL</span><span>Juyoung Lee</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#about" lang="en">About</a>
+        <a href="cv.html" lang="en">CV</a>
+        <a href="index.html#work" lang="en">Projects</a>
+      </nav>
+      <div class="languages" role="group" aria-label="Language"><a data-language-link href="../emblemr.html" lang="ko" hreflang="ko" aria-label="한국어로 보기">한국어</a><span lang="en" aria-current="true">EN</span></div>
+    </div>
+  </header>
+  <main class="case shell" id="main">
+    <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-head">
+      <p class="eyebrow">Mixed reality interaction · KAIST WIT Lab</p>
+      <h1 class="case-title">EmbleMR</h1>
+      <p class="case-lede"><strong>When someone says “translate this,” which object is “this”?</strong><br>Someone can look away from an object before they finish speaking. At WIT Lab, we studied how a mixed reality interface connects an action to the intended object. I built the object-attached menu and voice controls for our comparison, then traced how targets changed during a task.</p>
+      <dl class="case-meta">
+        <div><dt>Dates</dt><dd>May – Aug 2026</dd></div>
+        <div><dt>My role</dt><dd>Undergraduate researcher · UI and voice input, user studies, interaction logs</dd></div>
+        <div><dt>Study</dt><dd>12 participants · 3 input methods · 7 tasks</dd></div>
+      </dl>
+    </header>
+    <figure class="case-figure" aria-labelledby="figure-heading">
+      <h2 id="figure-heading">Three events in a single trial</h2>
+      <dl class="case-meta">
+        <div><dt>Input</dt><dd>A participant issues a command using the menu, voice, or gaze and gesture.</dd></div>
+        <div><dt>Target</dt><dd>The system selects the object to act on. A comparison requires two distinct targets.</dd></div>
+        <div><dt>Result</dt><dd>The log records when the result appears and whether the trial succeeds, requires a retry, or times out.</dd></div>
+      </dl>
+      <figcaption>I aligned these events with gaze, head, and hand trajectories to locate the step where an interaction went wrong.</figcaption>
+    </figure>
+    <div class="case-text">
+      <section>
+        <h2>Giving each input method the same tasks</h2>
+        <p>The team studied how people could look at a physical object and use a hand gesture to request an action. I built the two comparison methods, an object-attached menu and voice input, and integrated seven tasks covering search, questions, translation, saving, anchoring, capture, and comparison. For search, translation, and comparison, we used prepared results to reduce variability in response generation.</p>
+      </section>
+      <section>
+        <h2>Losing an object mid-sentence</h2>
+        <p>When asking to compare two objects, a participant would often look from the first to the second while speaking. A selection based only on gaze at the end of the utterance could miss the first object. By aligning gaze trajectories with the target-selection and result timestamps, I could distinguish a selection error from a slow response.</p>
+      </section>
+      <section>
+        <h2>Why the command mattered</h2>
+        <p>Twelve participants tried all three input methods across seven tasks, with the order of the methods counterbalanced. I helped run the sessions, analyze errors, and prepare the manuscript. Voice was fastest when the task was to ask a question. When evaluating an input method, I now consider both how many objects someone needs to refer to and how naturally they can express the command.</p>
+      </section>
+      <div class="case-links">
+        <a href="cv.html#hci-research">WIT Lab research experience in my CV <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <nav class="case-next" aria-label="Project navigation">
+      <a href="microbiome.html" rel="prev"><span aria-hidden="true">←</span> Previous project · Gut Microbiome and Parkinson’s Disease</a>
+      <a href="preference-learning.html" rel="next">Next project · Bayesian Preference Learning <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+<script src="../nav.js" defer></script>
+</body>
+</html>
