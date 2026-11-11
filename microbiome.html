@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>장내 미생물과 파킨슨병 · 이주영 포트폴리오</title>
-  <meta name="description" content="파킨슨병 환자군과 대조군은 장내 미생물 구성에서 어떤 차이를 보일까? 공개 염기서열 자료 두 건을 골라 읽기 수를 살펴보고, 시료별 미생물 서열을 비교할 수 있는 표를 만들었습니다.">
+  <meta name="description" content="장–뇌 축에 대한 관심에서 알파시누클레인병증 연구 질문으로. 공개 16S 데이터 선정, QIIME 2·DADA2 전처리, 미생물 분류와 후속 머신러닝 분석 계획을 소개합니다.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="assets/mark.png">
-  <link rel="stylesheet" href="style.css?v=white-bilingual-1">
+  <link rel="stylesheet" href="style.css?v=microbiome-6">
 <link rel="alternate" hreflang="ko" href="microbiome.html">
 <link rel="alternate" hreflang="en" href="en/microbiome.html">
 </head>
@@ -27,31 +27,61 @@
   <main class="case shell" id="main">
     <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> 프로젝트 목록</a>
     <header class="case-head">
-      <p class="eyebrow">생물정보학 · KAIST BCS361</p>
+      <p class="eyebrow">Gut to Brain · 장–뇌 축 · KAIST BCS361</p>
       <h1 class="case-title">장내 미생물과 파킨슨병</h1>
-      <p class="case-lede"><strong>공개 16S 서열에서 머신러닝 입력표를 만들기까지</strong><br>파킨슨병 환자군과 대조군은 장내 미생물 구성에서 어떤 차이를 보일까? 공개 염기서열 자료 두 건을 골라 읽기 수를 살펴보고, 시료별 미생물 서열을 비교할 수 있는 표를 만들었습니다.</p>
+      <p class="case-lede"><strong>장과 뇌가 연결되어 있다면, 장내 미생물에서 무엇을 읽을 수 있을까?</strong><br>장과 뇌가 서로 신호를 주고받는 장–뇌 축을 알게 되면서, 알파시누클레인 단백질의 축적과 관련된 신경계 질환인 알파시누클레인병증을 탐구하고 싶어졌습니다. 그중 파킨슨병 환자군과 대조군의 장내 미생물을 비교하는 질문으로 좁혀, 공개 염기서열을 분석에 사용할 수 있는 표로 바꾸는 작업부터 시작했습니다.</p>
       <dl class="case-meta">
         <div><dt>기간</dt><dd>2025.03 – 2025.06</dd></div>
         <div><dt>분석 대상</dt><dd>장내 미생물 16S rRNA 유전자 서열</dd></div>
-        <div><dt>도구</dt><dd>QIIME 2, DADA2, Docker, Google Colab</dd></div>
+        <div><dt>도구</dt><dd>QIIME 2, DADA2, Greengenes, Python, Google Colab</dd></div>
       </dl>
     </header>
     <figure class="case-figure">
-      <img src="assets/microbiome-read-counts.png" alt="정방향 서열 수가 가로축, 시료 수가 세로축인 히스토그램. 시료별 읽기 수는 97개에서 361,849개까지 분포한다.">
-      <figcaption>PRJEB27564의 시퀀싱 기록 300건을 QIIME 2로 요약한 원본 그래프. 가로축은 기록당 정방향 서열 읽기 수, 세로축은 해당 구간에 속하는 기록 수입니다.</figcaption>
+      <img src="assets/microbiome-phylum-composition.png" alt="시험 시료 10개의 리드 수를 합산한 미생물 문 수준 구성. 미분류 50.8%, Firmicutes 36.4%, Bacteroidetes 9.1%, Tenericutes 1.2%, Proteobacteria 0.9%, 기타 분류군 1.6%.">
+      <figcaption>실제로 전처리한 PRJEB55464 시험 시료 10개의 미생물 문(phylum) 수준 구성입니다. 880개 ASV에 미생물 분류명을 연결하고 전체 248,957개 리드를 합산했습니다. 미분류 서열도 포함한 전처리 결과입니다.<br><a class="study-source" href="assets/microbiome-phylum-composition.png">구성 그래프 크게 보기 <span aria-hidden="true">↗</span></a></figcaption>
     </figure>
+    <nav class="analysis-steps" aria-label="분석 과정">
+      <ol>
+        <li><a href="#data-selection">데이터 선정</a></li>
+        <li><a href="#quality-control">수량·품질 점검</a></li>
+        <li><a href="#asv-table">서열 특징표</a></li>
+        <li><a href="#taxonomy">미생물 분류</a></li>
+        <li><a href="#modeling">분류 실험 계획</a></li>
+      </ol>
+    </nav>
     <div class="case-text">
-      <section>
-        <h2>원자료를 고르는 기준</h2>
-        <p>유럽 염기서열 아카이브(ENA)에서 환자군과 대조군이 있고, DNA 양 끝을 읽은 16S 자료를 찾았습니다. 선정한 자료는 PRJEB55464와 PRJEB27564입니다. 두 번째 자료는 시퀀싱 기록별로 정방향·역방향 파일을 짝지어 QIIME 2 입력 목록을 만들었습니다.</p>
+      <section id="data-selection">
+        <h2>연구 질문에 맞는 자료 찾기</h2>
+        <p>목표는 장내 미생물 분포가 알파시누클레인병증의 유무나 진행 상태를 구분하는 단서가 될 수 있는지 살펴보는 것이었습니다. 먼저 파킨슨병을 대상으로 질환군·대조군 표시가 있고, 시료 정보가 명확하며 양방향으로 읽힌 16S rRNA 자료를 찾았습니다. ENA의 PRJEB55464와 PRJEB27564를 선정했습니다.</p>
       </section>
-      <section>
-        <h2>서열 파일을 시료별 표로</h2>
-        <p>한 시료에서 읽힌 서열 수는 적게는 97개, 많게는 361,849개였습니다. 이 차이를 먼저 확인한 뒤, 시험 데이터에서 DADA2로 서열 오류와 키메라를 걸러냈습니다. 각 시료에서 서로 구별되는 서열 변이(ASV)가 몇 번 관찰됐는지 표로 만들고, 대표 서열에 미생물 분류명을 붙였습니다.</p>
+      <section id="quality-control">
+        <h2>파일을 모은 뒤 먼저 확인한 것</h2>
+        <p>PRJEB27564에서 시퀀싱 기록 300건의 정방향·역방향 파일을 짝지어 입력 목록(manifest)을 만들었습니다. QIIME 2에서 확인한 정방향 읽기 수는 기록당 97~361,849개로 차이가 컸습니다. 이 분포와 서열 품질을 살펴보며 후속 전처리에 사용할 조건을 점검했습니다.</p>
       </section>
-      <section>
-        <h2>끊긴 분석을 이어서 실행하기</h2>
-        <p>대표 서열을 분류할 때 메모리가 부족해 Colab 실행이 중간에 멈췄습니다. Docker로 QIIME 2 버전을 고정하고 단계별 산출물을 저장해 멈춘 지점부터 이어갈 수 있게 했습니다. 이렇게 준비한 표로 환자군과 대조군을 구분하는 랜덤 포레스트를 탐색했고, 개별 예측에 기여한 특징을 살펴보는 방법으로 SHAP을 제안했습니다.</p>
+      <section id="asv-table">
+        <h2>원시 서열에서 880개 특징으로</h2>
+        <p>PRJEB55464의 시험 시료 10개를 QIIME 2로 가져와 DADA2를 실행했습니다. 오류를 교정하고, 정방향·역방향 서열을 합치고, 서로 다른 서열이 붙어 생긴 키메라를 제거했습니다. 결과는 시료 10개에서 880개 서열 변이(ASV)의 관측 횟수를 기록한 표였습니다. 이 표가 미생물 구성 비교와 분류 모델의 입력이 됩니다.</p>
+      </section>
+      <section id="taxonomy">
+        <h2>서열에 미생물 분류명 연결하기</h2>
+        <p>저장된 결과에는 Greengenes 분류기가 적용돼 있습니다. 대표 서열의 분류 결과와 특징표를 ASV 식별자로 연결해 미생물 구성을 집계했습니다. 문 수준에서 분류되지 않은 리드가 약 50.8%였습니다. 이 비중을 그래프에 남겨, 분류기와 참조 데이터가 해석에 미치는 영향을 함께 살펴볼 수 있게 했습니다.</p>
+      </section>
+      <section id="computing">
+        <h2>계산이 중단돼도 남는 분석 만들기</h2>
+        <p>Colab에서 대표 서열을 분류하는 동안 메모리 부족을 겪었습니다. 단계별 산출물을 저장하고, 입력·옵션·실행 버전이 기록된 QIIME 2 결과를 보존했습니다. Docker 환경에서 실행하는 절차와 다른 참조 분류기를 적용하는 코드도 정리하며, 같은 입력으로 분석을 이어갈 수 있는 방법을 검토했습니다.</p>
+      </section>
+      <section id="modeling">
+        <h2>전처리 다음에 검증하려던 모델</h2>
+        <p>발표에서는 Random Forest로 질환군·대조군을 구분하고, SHAP으로 각 예측에 기여한 미생물 특징을 살펴보는 분석을 제안했습니다. 후속 실험에서는 시료의 질환 정보를 정확히 연결하고, 연구·수집 조건에 따른 차이와 질환에 따른 차이를 구별하는 평가가 필요합니다. 시료 10개에 대한 이번 결과는 전처리와 분류표 구성까지의 기록입니다.</p>
+      </section>
+      <figure class="analysis-evidence">
+        <img src="assets/microbiome-read-counts.png" alt="300개 시퀀싱 기록의 정방향 읽기 수 분포" loading="lazy">
+        <figcaption>수량 점검에 사용한 PRJEB27564 원본 QIIME 2 출력. 300개 시퀀싱 기록의 정방향 읽기 수 분포로, 위의 10개 시험 시료 구성표와는 데이터셋·처리 단계가 다릅니다.</figcaption>
+      </figure>
+      <section class="study-summary">
+        <h2>이 프로젝트가 남긴 의미</h2>
+        <p>‘장과 뇌가 연결된다’는 생물학적 관심을 데이터 선정 기준, 전처리 단계, 모델의 입력과 검증 질문으로 구체화했습니다. 샘플의 정체와 품질, 분류되지 않은 서열을 이해하는 과정이 질환과의 관계를 해석하는 출발점이었습니다. 이후에는 독립적인 환자군에서도 일관되게 나타나는 특징을 찾고, 질환의 진행이나 조기 변화와 연결할 수 있는지 탐구하고 싶습니다.</p>
+        <a class="study-source" href="https://pubmed.ncbi.nlm.nih.gov/27912057/">장–뇌 축과 알파시누클레인 관련 연구 <span aria-hidden="true">↗</span></a>
       </section>
       <div class="case-links">
         <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB55464">ENA 원자료 · PRJEB55464 <span aria-hidden="true">↗</span></a>

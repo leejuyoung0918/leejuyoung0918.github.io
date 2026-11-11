@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gut Microbiome and Parkinson’s Disease · Juyoung Lee</title>
-  <meta name="description" content="Do gut microbial communities differ between people with Parkinson’s disease and healthy controls? I selected two public sequencing datasets, inspected the read counts, and built a table for comparing microbial sequence variants across samples.">
+  <meta name="description" content="Interest in the gut–brain axis led me to investigate alpha-synucleinopathy. This project follows public 16S data selection, QIIME 2 and DADA2 preprocessing, taxonomic assignment and plans for machine-learning analysis.">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="../assets/mark.png">
-  <link rel="stylesheet" href="../style.css?v=white-bilingual-1">
+  <link rel="stylesheet" href="../style.css?v=microbiome-6">
 <link rel="alternate" hreflang="ko" href="../microbiome.html">
 <link rel="alternate" hreflang="en" href="microbiome.html">
 </head>
@@ -27,31 +27,61 @@
   <main class="case shell" id="main">
     <a class="back-link" href="index.html#work"><span aria-hidden="true">←</span> All projects</a>
     <header class="case-head">
-      <p class="eyebrow">Bioinformatics · KAIST BCS361</p>
+      <p class="eyebrow">Gut to Brain · Gut–brain axis · KAIST BCS361</p>
       <h1 class="case-title">Gut Microbiome and Parkinson’s Disease</h1>
-      <p class="case-lede"><strong>From public 16S sequences to a table for machine learning</strong><br>Do gut microbial communities differ between people with Parkinson’s disease and healthy controls? I selected two public sequencing datasets, inspected the read counts, and built a table for comparing microbial sequence variants across samples.</p>
+      <p class="case-lede"><strong>If the gut and brain communicate, what could the gut microbiome tell us?</strong><br>Learning about the gut–brain axis made me want to explore alpha-synucleinopathies, neurological conditions associated with the accumulation of alpha-synuclein protein. I narrowed that interest to comparing the gut microbiomes of people with Parkinson’s disease and controls, starting by turning public sequencing reads into a table that could support analysis.</p>
       <dl class="case-meta">
         <div><dt>Dates</dt><dd>Mar – Jun 2025</dd></div>
         <div><dt>Data</dt><dd>Gut microbiome 16S rRNA gene sequences</dd></div>
-        <div><dt>Tools</dt><dd>QIIME 2, DADA2, Docker, Google Colab</dd></div>
+        <div><dt>Tools</dt><dd>QIIME 2, DADA2, Greengenes, Python, Google Colab</dd></div>
       </dl>
     </header>
     <figure class="case-figure">
-      <img src="../assets/microbiome-read-counts.png" alt="Histogram of forward read counts per sample. Counts span 97 to 361,849 reads across the sequencing runs.">
-      <figcaption>Original QIIME 2 output for 300 sequencing runs from PRJEB27564. The horizontal axis shows forward reads per run. The vertical axis counts the runs in each interval.</figcaption>
+      <img src="../assets/microbiome-phylum-composition.png" alt="Phylum composition pooled across ten test samples. Unassigned 50.8 percent, Firmicutes 36.4 percent, Bacteroidetes 9.1 percent, Tenericutes 1.2 percent, Proteobacteria 0.9 percent and other classified phyla 1.6 percent.">
+      <figcaption>Phylum composition from the ten PRJEB55464 test samples I processed. I joined taxonomic assignments to 880 ASVs and pooled 248,957 reads across the samples. The preprocessing result includes reads without a phylum assignment.<br><a class="study-source" href="../assets/microbiome-phylum-composition.png">Open the composition chart <span aria-hidden="true">↗</span></a></figcaption>
     </figure>
+    <nav class="analysis-steps" aria-label="Analysis workflow">
+      <ol>
+        <li><a href="#data-selection">Select datasets</a></li>
+        <li><a href="#quality-control">Inspect reads</a></li>
+        <li><a href="#asv-table">Build feature table</a></li>
+        <li><a href="#taxonomy">Assign taxonomy</a></li>
+        <li><a href="#modeling">Plan classification</a></li>
+      </ol>
+    </nav>
     <div class="case-text">
-      <section>
-        <h2>Choosing the source data</h2>
-        <p>I looked in the European Nucleotide Archive for studies with paired-end 16S reads and both Parkinson’s and control groups. I selected PRJEB55464 and PRJEB27564. For the second study, I matched forward and reverse files by sequencing run and listed each pair in a manifest for QIIME 2.</p>
+      <section id="data-selection">
+        <h2>Turning the question into dataset criteria</h2>
+        <p>I wanted to investigate whether gut microbial patterns could provide clues about the presence or progression of alpha-synucleinopathy. I began with Parkinson’s disease and looked for paired-end 16S rRNA data with case and control labels and clear sample metadata. I selected PRJEB55464 and PRJEB27564 from the European Nucleotide Archive.</p>
       </section>
-      <section>
-        <h2>From reads to a feature table</h2>
-        <p>Forward read counts ranged from 97 to 361,849 per sample in the second dataset. After checking that spread, I used DADA2 on test data to remove sequencing errors and chimeras. The resulting table recorded how often each distinct amplicon sequence variant (ASV) occurred in each sample. I also inspected the taxonomic assignments for representative sequences.</p>
+      <section id="quality-control">
+        <h2>Checking the inputs before processing</h2>
+        <p>For PRJEB27564, I paired the forward and reverse files for 300 sequencing runs in a QIIME 2 manifest. The summary showed a wide range of forward read counts, from 97 to 361,849 per run. I inspected the read-count distribution and sequence quality to assess the inputs for subsequent preprocessing.</p>
       </section>
-      <section>
-        <h2>Resuming an interrupted run</h2>
-        <p>The Colab session ran out of memory during taxonomic classification. I pinned the QIIME 2 version in Docker and saved the output of each stage so I could resume from the last completed step. With the table ready, I explored a random forest for distinguishing the two groups and proposed using SHAP to examine which features contributed to individual predictions.</p>
+      <section id="asv-table">
+        <h2>From raw reads to 880 features</h2>
+        <p>I imported ten test samples from PRJEB55464 into QIIME 2 and ran DADA2 to correct sequencing errors, merge paired reads and remove chimeras. The output counted 880 distinct amplicon sequence variants (ASVs) across those ten samples. This table provides the microbial features for a comparison or classification experiment.</p>
+      </section>
+      <section id="taxonomy">
+        <h2>Connecting sequences to microbial groups</h2>
+        <p>The saved taxonomic assignments use a Greengenes classifier. I matched the assignments to the feature table by ASV identifier and aggregated counts by microbial group. About 50.8% of reads lacked a phylum assignment. Keeping that category in the chart makes the limits of the reference data and classifier visible in the interpretation.</p>
+      </section>
+      <section id="computing">
+        <h2>Keeping useful outputs when a run stops</h2>
+        <p>A Colab session ran out of memory while classifying representative sequences. I retained intermediate outputs and the QIIME 2 records of inputs, parameters and software versions. I also prepared a Docker execution procedure and code for another reference classifier while exploring ways to resume the analysis with the same inputs.</p>
+      </section>
+      <section id="modeling">
+        <h2>The classification experiment I proposed</h2>
+        <p>The presentation proposed a random forest to distinguish Parkinson’s cases from controls, followed by SHAP to examine which microbial features contribute to predictions. A subsequent experiment would need correctly matched disease labels and evaluation that accounts for study and collection conditions. The ten-sample result shown here covers preprocessing and construction of the taxonomic feature table.</p>
+      </section>
+      <figure class="analysis-evidence">
+        <img src="../assets/microbiome-read-counts.png" alt="Forward-read count distribution across 300 sequencing runs" loading="lazy">
+        <figcaption>Original QIIME 2 quality-check output for 300 PRJEB27564 sequencing runs. This forward-read distribution comes from a different dataset and processing stage than the ten-sample composition chart above.</figcaption>
+      </figure>
+      <section class="study-summary">
+        <h2>What the project meant to me</h2>
+        <p>I turned an interest in gut–brain communication into dataset criteria, preprocessing steps, model inputs and questions to test. Understanding each sample’s identity and quality, including the sequences we could not classify, became the starting point for interpreting a relationship with disease. I want to extend this work by looking for features that persist in independent patient groups and examining whether they relate to progression or early changes.</p>
+        <a class="study-source" href="https://pubmed.ncbi.nlm.nih.gov/27912057/">Research on the gut–brain axis and alpha-synuclein <span aria-hidden="true">↗</span></a>
       </section>
       <div class="case-links">
         <a href="https://www.ebi.ac.uk/ena/browser/view/PRJEB55464">ENA dataset · PRJEB55464 <span aria-hidden="true">↗</span></a>
