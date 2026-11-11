@@ -55,7 +55,7 @@ img { display: block; max-width: 100%; }
 .highlight-heading { font-size: .7rem; font-weight: 750; text-transform: uppercase; letter-spacing: .05em; }
 .highlight-count { margin-left: 8px; font-size: .68rem; font-variant-numeric: tabular-nums; color: var(--secondary); }
 .highlight-controls { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-.highlight-controls[hidden],.highlight-selectors[hidden] { display: none; }
+.highlight-controls[hidden] { display: none; }
 .highlight-carousel button { appearance: none; cursor: pointer; font: inherit; color: inherit; border: 0; background: none; }
 .highlight-controls button { min-width: 30px; min-height: 32px; padding: 4px; font-size: 1rem; }
 .highlight-controls .rotation-toggle { padding: 4px 8px; font-size: .7rem; font-weight: 650; }
@@ -69,10 +69,9 @@ img { display: block; max-width: 100%; }
 .highlight-description { font-size: .82rem; line-height: 1.65; color: var(--secondary); }
 .highlight-links { display: flex; flex-wrap: wrap; gap: 5px 17px; margin-top: 12px; }
 .highlight-links a { font-size: .76rem; font-weight: 650; }
-.highlight-selectors { display: flex; border-top: 1px solid rgb(17 18 15 / .2); }
-.highlight-selectors button { flex: 1; min-height: 38px; padding: 7px 4px; font-size: .72rem; font-weight: 650; border-bottom: 2px solid transparent; color: var(--secondary); }
-.highlight-selectors button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
-.highlight-selectors button:hover { background: rgb(255 255 255 / .35); }
+.highlight-labels { display: flex; list-style: none; margin: 0; padding: 0; border-top: 1px solid rgb(17 18 15 / .2); }
+.highlight-labels li { flex: 1; min-height: 38px; padding: 9px 4px; text-align: center; font-size: .72rem; font-weight: 650; border-bottom: 2px solid transparent; color: var(--secondary); }
+.highlight-labels li[aria-current="true"] { color: var(--ink); border-color: var(--ink); }
 .activity-section { margin-top: clamp(28px,4vw,48px); }
 .activity-section > h3 { margin-bottom: 14px; font-size: clamp(1.25rem,2.1vw,1.7rem); }
 .activity-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; }
